@@ -36,7 +36,7 @@ const AllUsers = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('https://yugproperties.onrender.com/api/auth/admin/users', {
+      const response = await fetch('https://api.yugproperties.co.in/api/auth/admin/users', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

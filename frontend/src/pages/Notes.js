@@ -42,7 +42,7 @@ const Notes = () => {
   const fetchNotes = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('https://yugproperties.onrender.com/api/notes', {
+      const response = await fetch('https://api.yugproperties.co.in/api/notes', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -64,7 +64,7 @@ const Notes = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('https://yugproperties.onrender.com/api/notes', {
+      const response = await fetch('https://api.yugproperties.co.in/api/notes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const Notes = () => {
   const updateNote = async (noteId, updates) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`https://yugproperties.onrender.com/api/notes/${noteId}`, {
+      const response = await fetch(`https://api.yugproperties.co.in/api/notes/${noteId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ const Notes = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`https://yugproperties.onrender.com/api/notes/${noteId}`, {
+      const response = await fetch(`https://api.yugproperties.co.in/api/notes/${noteId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -127,7 +127,7 @@ const Notes = () => {
   const togglePin = async (noteId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`https://yugproperties.onrender.com/api/notes/${noteId}/pin`, {
+      const response = await fetch(`https://api.yugproperties.co.in/api/notes/${noteId}/pin`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`

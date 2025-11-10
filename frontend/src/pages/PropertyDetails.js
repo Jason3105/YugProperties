@@ -61,7 +61,7 @@ const PropertyDetails = () => {
         headers['Authorization'] = `Bearer ${token}`;
       }
 
-      await fetch(`https://yugproperties.onrender.com/api/properties/${id}/view`, {
+      await fetch(`https://api.yugproperties.co.in/api/properties/${id}/view`, {
         method: 'POST',
         headers,
         body: JSON.stringify({ sessionId })
@@ -75,7 +75,7 @@ const PropertyDetails = () => {
   const fetchPropertyDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`https://yugproperties.onrender.com/api/properties/${id}`);
+      const response = await fetch(`https://api.yugproperties.co.in/api/properties/${id}`);
       const data = await response.json();
 
       if (response.ok) {
@@ -99,7 +99,7 @@ const PropertyDetails = () => {
       if (latitude) params.append('latitude', latitude);
       if (longitude) params.append('longitude', longitude);
 
-      const response = await fetch(`https://yugproperties.onrender.com/api/properties/map-embed-url?${params}`);
+      const response = await fetch(`https://api.yugproperties.co.in/api/properties/map-embed-url?${params}`);
       const data = await response.json();
 
       if (response.ok && data.embedUrl) {
@@ -113,7 +113,7 @@ const PropertyDetails = () => {
   const checkWishlistStatus = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`https://yugproperties.onrender.com/api/wishlist/check/${id}`, {
+      const response = await fetch(`https://api.yugproperties.co.in/api/wishlist/check/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -146,7 +146,7 @@ const PropertyDetails = () => {
       
       if (isSaved) {
         // Remove from wishlist
-        const response = await fetch(`https://yugproperties.onrender.com/api/wishlist/remove/${id}`, {
+        const response = await fetch(`https://api.yugproperties.co.in/api/wishlist/remove/${id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -158,7 +158,7 @@ const PropertyDetails = () => {
         }
       } else {
         // Add to wishlist
-        const response = await fetch(`https://yugproperties.onrender.com/api/wishlist/add`, {
+        const response = await fetch(`https://api.yugproperties.co.in/api/wishlist/add`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

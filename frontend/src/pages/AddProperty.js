@@ -126,7 +126,7 @@ const AddProperty = () => {
       });
 
       const token = localStorage.getItem('token');
-      const response = await fetch('https://yugproperties.onrender.com/api/properties/upload-images', {
+      const response = await fetch('https://api.yugproperties.co.in/api/properties/upload-images', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -203,7 +203,7 @@ const AddProperty = () => {
       }
 
       const token = localStorage.getItem('token');
-      const response = await fetch('https://yugproperties.onrender.com/api/properties/upload-brochure', {
+      const response = await fetch('https://api.yugproperties.co.in/api/properties/upload-brochure', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -240,7 +240,7 @@ const AddProperty = () => {
       // Delete from Firebase Storage
       const token = localStorage.getItem('token');
       
-      const response = await fetch('https://yugproperties.onrender.com/api/properties/delete-brochure', {
+      const response = await fetch('https://api.yugproperties.co.in/api/properties/delete-brochure', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -275,7 +275,7 @@ const AddProperty = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('https://yugproperties.onrender.com/api/properties', {
+      const response = await fetch('https://api.yugproperties.co.in/api/properties', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
