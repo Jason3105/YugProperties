@@ -32,8 +32,8 @@ const Dashboard = () => {
   const fetchDashboardData = async () => {
     try {
       const [propertiesRes, favoritesRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/properties'),
-        axios.get('http://localhost:5000/api/favorites', {
+        axios.get('https://yugproperties.onrender.com/api/properties'),
+        axios.get('https://yugproperties.onrender.com/api/favorites', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
       ]);

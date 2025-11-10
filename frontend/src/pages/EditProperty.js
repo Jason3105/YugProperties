@@ -104,7 +104,7 @@ const EditProperty = () => {
   const fetchPropertyDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/properties/${id}`);
+      const response = await fetch(`https://yugproperties.onrender.com/api/properties/${id}`);
       const data = await response.json();
 
       if (response.ok && data.property) {
@@ -187,7 +187,7 @@ const EditProperty = () => {
       });
 
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/properties/upload-images', {
+      const response = await fetch('https://yugproperties.onrender.com/api/properties/upload-images', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -259,7 +259,7 @@ const EditProperty = () => {
       }
 
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/properties/upload-brochure', {
+      const response = await fetch('https://yugproperties.onrender.com/api/properties/upload-brochure', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -295,7 +295,7 @@ const EditProperty = () => {
       // Delete from Firebase Storage
       const token = localStorage.getItem('token');
       
-      const response = await fetch('http://localhost:5000/api/properties/delete-brochure', {
+      const response = await fetch('https://yugproperties.onrender.com/api/properties/delete-brochure', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -331,7 +331,7 @@ const EditProperty = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/properties/${id}`, {
+      const response = await fetch(`https://yugproperties.onrender.com/api/properties/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

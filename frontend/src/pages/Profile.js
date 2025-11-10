@@ -44,7 +44,7 @@ const Profile = () => {
   const fetchSavedProperties = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/wishlist', {
+      const response = await fetch('https://yugproperties.onrender.com/api/wishlist', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

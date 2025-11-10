@@ -39,7 +39,7 @@ const Properties = () => {
       if (filters.bedrooms) queryParams.append('bedrooms', filters.bedrooms);
       if (filters.status) queryParams.append('status', filters.status);
 
-      const response = await fetch(`http://localhost:5000/api/properties?${queryParams}`);
+      const response = await fetch(`https://yugproperties.onrender.com/api/properties?${queryParams}`);
       const data = await response.json();
 
       if (response.ok) {
