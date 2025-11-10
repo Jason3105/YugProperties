@@ -6,7 +6,7 @@ import axios from 'axios';
 import { HelmetProvider } from 'react-helmet-async';
 
 // Configure axios defaults
-axios.defaults.baseURL = 'https://yugproperties.onrender.com';
+axios.defaults.baseURL = 'https://api.yugproperties.co.in';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

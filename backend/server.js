@@ -54,8 +54,9 @@ const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
     ? [
         process.env.FRONTEND_URL, 
-        'https://yug-properties-frontend.onrender.com',
-        'https://yugproperties.onrender.com'
+        'https://yugproperties.co.in',
+        'https://www.yugproperties.co.in',
+        'https://yug-properties-frontend.onrender.com'
       ] // Production domains
     : ['http://localhost:3000', 'http://localhost:3001'], // Development URLs
   credentials: true,
