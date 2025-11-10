@@ -52,7 +52,11 @@ app.use('/api/', limiter);
 // CORS Configuration for Production
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL, 'https://your-domain.com'] // Add your production domains
+    ? [
+        process.env.FRONTEND_URL, 
+        'https://yug-properties-frontend.onrender.com',
+        'https://yugproperties.onrender.com'
+      ] // Production domains
     : ['http://localhost:3000', 'http://localhost:3001'], // Development URLs
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
