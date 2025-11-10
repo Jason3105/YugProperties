@@ -7,6 +7,9 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust proxy - Required for Render and other proxy environments
+app.set('trust proxy', 1);
+
 // Security: Helmet - Set security headers
 app.use(helmet({
   contentSecurityPolicy: {
