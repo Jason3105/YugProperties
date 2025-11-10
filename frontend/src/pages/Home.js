@@ -130,6 +130,7 @@ const Home = () => {
         title="Yug Properties - Premium Real Estate in Mumbai | Buy, Sell & Rent Properties in Virar, Vasai, Nallasopara"
         description="Discover premium residential and commercial properties across Mumbai. Expert real estate services in Virar, Vasai, Nallasopara. Find 1BHK, 2BHK, 3BHK flats, villas, plots. ✓ Verified Listings ✓ Best Prices ✓ Trusted Consultants. Call +91-8805117788"
         keywords="real estate Mumbai, properties in Virar, flats in Mumbai, villas in Vasai, property for sale Mumbai, property for rent Mumbai, 1BHK Mumbai, 2BHK Mumbai, 3BHK Mumbai, real estate Nallasopara, property dealers Mumbai, buy property Mumbai, commercial property Mumbai, residential flats Mumbai, luxury villas Mumbai, affordable flats Mumbai, property consultants Mumbai, Yug Properties Virar"
+        image="/og-image.jpg"
         schema={homeSchema}
       />
       
