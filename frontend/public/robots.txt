@@ -1,0 +1,31 @@
+# Yug Properties - Real Estate Mumbai
+# https://www.robotstxt.org/robotstxt.html
+
+# Allow all search engines
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /api/
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://yugproperties.co.in/sitemap.xml
+Sitemap: https://yugproperties.co.in/sitemap-properties.xml
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/

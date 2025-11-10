@@ -1,0 +1,97 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment Variables (CRITICAL - Contains secrets!)
+.env
+.env.*
+!.env.example
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Firebase Service Account (CRITICAL - Private key!)
+config/firebase-service-account.json
+firebase-service-account.json
+**/firebase-service-account*.json
+serviceAccountKey.json
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# Build & Distribution
+dist/
+build/
+out/
+.next/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Uploads & Temporary Files
+uploads/
+tmp/
+temp/
+*.tmp
+*.temp
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Security & Certificates
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+
+# Backup Files
+*.bak
+*.backup
+*~
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# Other Sensitive Files
+secrets/
+private/
+.npmrc
+.yarnrc

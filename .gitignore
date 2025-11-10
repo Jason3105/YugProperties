@@ -1,0 +1,141 @@
+# ============================================
+# CRITICAL SECURITY FILES - NEVER COMMIT!
+# ============================================
+
+# Environment Variables (Database URLs, API Keys, Secrets)
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Firebase Service Account (Private Keys!)
+**/firebase-service-account*.json
+firebase-service-account.json
+serviceAccountKey.json
+config/firebase-service-account.json
+
+# Certificates & Keys
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+*.ppk
+
+# ============================================
+# DEPENDENCIES
+# ============================================
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ============================================
+# BUILD & DISTRIBUTION
+# ============================================
+build/
+dist/
+out/
+.next/
+**/build/
+**/dist/
+
+# ============================================
+# LOGS
+# ============================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+logs/
+*.log.*
+
+# ============================================
+# TESTING
+# ============================================
+coverage/
+.nyc_output/
+**/coverage/
+
+# ============================================
+# OS FILES
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ============================================
+# IDE & EDITORS
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+.vs/
+
+# ============================================
+# CACHE
+# ============================================
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+*.cache
+
+# ============================================
+# TEMPORARY & UPLOADS
+# ============================================
+tmp/
+temp/
+uploads/
+**/tmp/
+**/temp/
+**/uploads/
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+
+# ============================================
+# DATABASE
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# ============================================
+# DEPLOYMENT
+# ============================================
+.vercel
+.netlify
+.firebase/
+
+# ============================================
+# MISC
+# ============================================
+secrets/
+private/
+.npmrc
+.yarnrc
