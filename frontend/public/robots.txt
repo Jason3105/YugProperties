@@ -1,4 +1,4 @@
-# Yug Properties - Real Estate Mumbai
+# Yug Properties - Premium Real Estate Mumbai
 # https://www.robotstxt.org/robotstxt.html
 
 # Allow all search engines
