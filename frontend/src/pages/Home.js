@@ -5,6 +5,7 @@ import { Button } from '../components/ui/Button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import SEO from '../components/SEO';
+import config from '../config';
 import { 
   Search, 
   MapPin, 
@@ -80,7 +81,7 @@ const Home = () => {
   const fetchFeaturedProperties = async () => {
     try {
       setLoadingProperties(true);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/properties/featured?limit=6`);
+      const response = await fetch(`${config.API_URL}/api/properties/featured?limit=6`);
       const data = await response.json();
       
       if (response.ok) {
