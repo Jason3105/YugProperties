@@ -191,17 +191,13 @@ const Home = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-white text-white hover:bg-white hover:text-foreground px-8 py-6 text-lg rounded-full backdrop-blur-sm bg-white/10 transition-all duration-300 cursor-pointer touch-manipulation"
-                onClick={() => window.location.href = 'tel:+918805117788'}
-                onTouchStart={(e) => e.currentTarget.style.transform = 'scale(0.95)'}
-                onTouchEnd={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              <a 
+                href="tel:+918805117788" 
+                className="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-foreground px-8 py-6 text-lg rounded-full backdrop-blur-sm bg-white/10 transition-all duration-300 font-medium"
               >
                 <Phone className="mr-2 w-5 h-5" />
                 Schedule a Tour
-              </Button>
+              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -475,17 +471,13 @@ const Home = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-6 text-lg font-semibold rounded-full hover:scale-105 transition-all cursor-pointer touch-manipulation"
-                onClick={() => window.location.href = 'tel:+918805117788'}
-                onTouchStart={(e) => e.currentTarget.style.transform = 'scale(0.95)'}
-                onTouchEnd={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              <a 
+                href="tel:+918805117788" 
+                className="inline-flex items-center justify-center border-2 border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-6 text-lg font-semibold rounded-full hover:scale-105 transition-all"
               >
                 <Phone className="mr-2 w-5 h-5" />
                 Talk to an Expert
-              </Button>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -547,30 +539,30 @@ const Home = () => {
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                  <button 
-                    onClick={() => window.location.href = 'mailto:subhash@yugproperties.co.in'}
+                  <a 
+                    href="mailto:subhash@yugproperties.co.in"
                     className="text-left hover:underline"
                   >
                     subhash@yugproperties.co.in
-                  </button>
+                  </a>
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                  <button 
-                    onClick={() => window.location.href = 'tel:+918805117788'}
+                  <a 
+                    href="tel:+918805117788"
                     className="text-left hover:underline"
                   >
                     +91 88051 17788
-                  </button>
+                  </a>
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                  <button 
-                    onClick={() => window.location.href = 'tel:+917875117788'}
+                  <a 
+                    href="tel:+917875117788"
                     className="text-left hover:underline"
                   >
                     +91 78751 17788
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
