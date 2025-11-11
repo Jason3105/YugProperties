@@ -191,7 +191,7 @@ const Home = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <a href="tel:8805117788">
+              <a href="tel:+918805117788">
                 <Button 
                   size="lg" 
                   variant="outline" 
@@ -472,7 +472,7 @@ const Home = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <a href="tel:8805117788">
+              <a href="tel:+918805117788">
                 <Button 
                   size="lg" 
                   variant="outline" 
@@ -547,11 +547,11 @@ const Home = () => {
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                  <a href="tel:8805117788">+91 88051 17788</a>
+                  <a href="tel:+918805117788">+91 88051 17788</a>
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                  <a href="tel:7875117788">+91 78751 17788</a>
+                  <a href="tel:+917875117788">+91 78751 17788</a>
                 </li>
               </ul>
             </div>

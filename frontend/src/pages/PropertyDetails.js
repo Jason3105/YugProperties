@@ -192,7 +192,11 @@ const PropertyDetails = () => {
   // Handle contact agent (phone call)
   const handleContactAgent = () => {
     if (property.contact_phone) {
-      window.location.href = `tel:${property.contact_phone}`;
+      // Ensure phone number has country code for mobile compatibility
+      const phoneNumber = property.contact_phone.startsWith('+') 
+        ? property.contact_phone 
+        : `+91${property.contact_phone.replace(/\D/g, '')}`;
+      window.location.href = `tel:${phoneNumber}`;
     } else {
       alert('Contact phone number not available');
     }
