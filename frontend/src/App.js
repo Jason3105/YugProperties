@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -16,6 +16,24 @@ import EditProperty from './pages/EditProperty';
 import Properties from './pages/Properties';
 import PropertyDetails from './pages/PropertyDetails';
 import Home from './pages/Home';
+
+// WWW Redirect Component
+const WWWRedirect = ({ children }) => {
+  useEffect(() => {
+    if (window.location.hostname === 'www.yugproperties.co.in') {
+      // Only redirect once to avoid loops
+      const newUrl = 'https://yugproperties.co.in' + window.location.pathname + window.location.search;
+      window.location.replace(newUrl);
+    }
+  }, []);
+
+  // Don't render anything if we're on www (will redirect)
+  if (window.location.hostname === 'www.yugproperties.co.in') {
+    return <LoadingScreen />;
+  }
+
+  return children;
+};
 
 // Protected Route Component
 const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -53,12 +71,13 @@ const PublicRoute = ({ children }) => {
 
 function App() {
   return (
-    <ThemeProvider>
-      <AuthProvider>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <Routes>
+    <WWWRedirect>
+      <ThemeProvider>
+        <AuthProvider>
+          <Router>
+            <div className="App">
+              <Navbar />
+              <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/properties" element={<Properties />} />
               <Route path="/properties/:id" element={<PropertyDetails />} />
@@ -139,6 +158,7 @@ function App() {
         </Router>
       </AuthProvider>
     </ThemeProvider>
+    </WWWRedirect>
   );
 }
 

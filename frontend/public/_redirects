@@ -1,5 +1,0 @@
-# Redirect www to non-www
-https://www.yugproperties.co.in/* https://yugproperties.co.in/:splat 301!
-
-# Redirect Render subdomain to custom domain
-https://yug-properties-frontend.onrender.com/* https://yugproperties.co.in/:splat 301!
