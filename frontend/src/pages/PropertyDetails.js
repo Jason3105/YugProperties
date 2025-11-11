@@ -189,27 +189,41 @@ const PropertyDetails = () => {
     }
   };
 
-  // Handle contact agent (phone call)
-  const handleContactAgent = () => {
+  // Handle contact agent (phone call) - Touch-friendly implementation
+  const handleContactAgent = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
     if (property.contact_phone) {
       // Ensure phone number has country code for mobile compatibility
       const phoneNumber = property.contact_phone.startsWith('+') 
         ? property.contact_phone 
         : `+91${property.contact_phone.replace(/\D/g, '')}`;
-      window.location.href = `tel:${phoneNumber}`;
+      
+      // Use setTimeout to ensure single execution on mobile
+      setTimeout(() => {
+        window.location.href = `tel:${phoneNumber}`;
+      }, 100);
     } else {
       alert('Contact phone number not available');
     }
   };
 
-  // Handle email inquiry
-  const handleEmailInquiry = () => {
+  // Handle email inquiry - Touch-friendly implementation
+  const handleEmailInquiry = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
     if (property.contact_email) {
       const subject = encodeURIComponent(`Inquiry about ${property.title}`);
       const body = encodeURIComponent(
         `Hi,\n\nI am interested in the property "${property.title}" located at ${property.address}, ${property.city}.\n\nProperty Details:\n- Price: ${formatPrice(property.price)}\n- Type: ${property.property_type}\n- Bedrooms: ${property.bedrooms || 'N/A'}\n\nPlease provide more information.\n\nThank you!`
       );
-      window.location.href = `mailto:${property.contact_email}?subject=${subject}&body=${body}`;
+      
+      // Use setTimeout to ensure single execution on mobile
+      setTimeout(() => {
+        window.location.href = `mailto:${property.contact_email}?subject=${subject}&body=${body}`;
+      }, 100);
     } else {
       alert('Contact email not available');
     }

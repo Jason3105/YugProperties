@@ -191,16 +191,17 @@ const Home = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <a href="tel:+918805117788">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-2 border-white text-white hover:bg-white hover:text-foreground px-8 py-6 text-lg rounded-full backdrop-blur-sm bg-white/10 transition-all duration-300"
-                >
-                  <Phone className="mr-2 w-5 h-5" />
-                  Schedule a Tour
-                </Button>
-              </a>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white text-white hover:bg-white hover:text-foreground px-8 py-6 text-lg rounded-full backdrop-blur-sm bg-white/10 transition-all duration-300 cursor-pointer touch-manipulation"
+                onClick={() => window.location.href = 'tel:+918805117788'}
+                onTouchStart={(e) => e.currentTarget.style.transform = 'scale(0.95)'}
+                onTouchEnd={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              >
+                <Phone className="mr-2 w-5 h-5" />
+                Schedule a Tour
+              </Button>
             </motion.div>
           </motion.div>
         </div>
@@ -233,16 +234,18 @@ const Home = () => {
             className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
           >
             {stats.map((stat, index) => (
-              <motion.div key={index} variants={fadeInUp}>
-                <Card className="text-center hover:shadow-2xl transition-all duration-300 border-0 bg-card/95 backdrop-blur-sm hover:scale-105">
-                  <CardContent className="pt-8 pb-6">
-                    <div className="flex justify-center mb-4 text-primary">
-                      {stat.icon}
+              <motion.div key={index} variants={fadeInUp} className="h-full">
+                <Card className="text-center hover:shadow-2xl transition-all duration-300 border-0 bg-card/95 backdrop-blur-sm hover:scale-105 h-full flex flex-col">
+                  <CardContent className="pt-6 pb-6 px-4 flex-1 flex flex-col justify-center">
+                    <div className="flex justify-center mb-3 text-primary">
+                      <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
+                        {stat.icon}
+                      </div>
                     </div>
-                    <h3 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                       {stat.number}
                     </h3>
-                    <p className="text-muted-foreground font-medium">{stat.label}</p>
+                    <p className="text-xs sm:text-sm md:text-base text-muted-foreground font-medium leading-tight">{stat.label}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -472,16 +475,17 @@ const Home = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <a href="tel:+918805117788">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-2 border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-6 text-lg font-semibold rounded-full hover:scale-105 transition-all"
-                >
-                  <Phone className="mr-2 w-5 h-5" />
-                  Talk to an Expert
-                </Button>
-              </a>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-6 text-lg font-semibold rounded-full hover:scale-105 transition-all cursor-pointer touch-manipulation"
+                onClick={() => window.location.href = 'tel:+918805117788'}
+                onTouchStart={(e) => e.currentTarget.style.transform = 'scale(0.95)'}
+                onTouchEnd={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              >
+                <Phone className="mr-2 w-5 h-5" />
+                Talk to an Expert
+              </Button>
             </div>
           </motion.div>
         </div>
@@ -543,15 +547,30 @@ const Home = () => {
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                  <a href="mailto:subhash@yugproperties.co.in">subhash@yugproperties.co.in</a>
+                  <button 
+                    onClick={() => window.location.href = 'mailto:subhash@yugproperties.co.in'}
+                    className="text-left hover:underline"
+                  >
+                    subhash@yugproperties.co.in
+                  </button>
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                  <a href="tel:+918805117788">+91 88051 17788</a>
+                  <button 
+                    onClick={() => window.location.href = 'tel:+918805117788'}
+                    className="text-left hover:underline"
+                  >
+                    +91 88051 17788
+                  </button>
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                  <a href="tel:+917875117788">+91 78751 17788</a>
+                  <button 
+                    onClick={() => window.location.href = 'tel:+917875117788'}
+                    className="text-left hover:underline"
+                  >
+                    +91 78751 17788
+                  </button>
                 </li>
               </ul>
             </div>
