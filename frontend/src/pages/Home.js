@@ -186,16 +186,16 @@ const Home = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full px-4 sm:px-0"
             >
               <Link to="/signup" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105 whitespace-nowrap">
+                <Button size="lg" className="w-full sm:w-[220px] h-[56px] bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg rounded-full shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105 whitespace-nowrap">
                   Explore Properties
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <a 
                 href="tel:+918805117788" 
-                className="w-full sm:w-auto inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-foreground px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-full backdrop-blur-sm bg-white/10 transition-all duration-300 font-medium whitespace-nowrap"
+                className="w-full sm:w-[220px] h-[56px] inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-foreground px-8 py-4 text-lg rounded-full backdrop-blur-sm bg-white/10 transition-all duration-300 font-medium whitespace-nowrap"
               >
-                <Phone className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+                <Phone className="mr-2 w-5 h-5" />
                 Schedule a Tour
               </a>
             </motion.div>
@@ -466,16 +466,16 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center w-full px-4 sm:px-0">
               <Link to="/signup" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto bg-white text-primary hover:bg-white/90 shadow-2xl px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full hover:scale-105 transition-all whitespace-nowrap">
+                <Button size="lg" className="w-full sm:w-[220px] h-[56px] bg-white text-primary hover:bg-white/90 shadow-2xl px-8 py-4 text-lg font-semibold rounded-full hover:scale-105 transition-all whitespace-nowrap">
                   Get Started Now
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <a 
                 href="tel:+918805117788" 
-                className="w-full sm:w-auto inline-flex items-center justify-center border-2 border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full hover:scale-105 transition-all whitespace-nowrap"
+                className="w-full sm:w-[220px] h-[56px] inline-flex items-center justify-center border-2 border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-4 text-lg font-semibold rounded-full hover:scale-105 transition-all whitespace-nowrap"
               >
-                <Phone className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+                <Phone className="mr-2 w-5 h-5" />
                 Talk to an Expert
               </a>
             </div>
