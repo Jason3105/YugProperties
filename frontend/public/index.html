@@ -3,6 +3,13 @@
   <head>
     <meta charset="utf-8" />
     
+    <!-- Redirect www to non-www -->
+    <script>
+      if (window.location.hostname === 'www.yugproperties.co.in') {
+        window.location.href = 'https://yugproperties.co.in' + window.location.pathname + window.location.search;
+      }
+    </script>
+    
     <!-- Basic Meta Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="theme-color" content="#FFA500" />
@@ -23,6 +30,9 @@
     <meta name="geo.placename" content="Mumbai, Maharashtra" />
     <meta name="geo.position" content="19.0760;72.8777" />
     <meta name="ICBM" content="19.0760, 72.8777" />
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

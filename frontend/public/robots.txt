@@ -5,6 +5,9 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /notes
 Disallow: /login
 Disallow: /signup
 Disallow: /api/
@@ -14,12 +17,15 @@ Crawl-delay: 1
 
 # Sitemaps
 Sitemap: https://yugproperties.co.in/sitemap.xml
-Sitemap: https://yugproperties.co.in/sitemap-properties.xml
+Sitemap: https://www.yugproperties.co.in/sitemap.xml
 
 # Specific rules for major search engines
 User-agent: Googlebot
 Allow: /
 Disallow: /admin/
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /notes
 Disallow: /api/
 
 User-agent: Googlebot-Image
@@ -28,4 +34,7 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 Disallow: /admin/
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /notes
 Disallow: /api/
