@@ -183,20 +183,20 @@ const Home = () => {
             
             <motion.div 
               variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full px-4 sm:px-0"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-xl mx-auto"
             >
-              <Link to="/signup" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-[220px] h-[56px] bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg rounded-full shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105 whitespace-nowrap">
+              <Link to="/signup" className="w-full sm:w-auto sm:flex-1">
+                <Button size="lg" className="w-full h-14 bg-primary hover:bg-primary/90 text-white px-8 text-lg rounded-full shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105">
                   Explore Properties
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <a 
                 href="tel:+918805117788" 
-                className="w-full sm:w-[220px] h-[56px] inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-foreground px-8 py-4 text-lg rounded-full backdrop-blur-sm bg-white/10 transition-all duration-300 font-medium whitespace-nowrap"
+                className="w-full sm:w-auto sm:flex-1 h-14 inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-foreground px-8 text-lg rounded-full backdrop-blur-sm bg-white/10 transition-all duration-300 font-medium"
               >
-                <Phone className="mr-2 w-5 h-5" />
-                Schedule a Tour
+                <Phone className="w-5 h-5" />
+                <span>Schedule a Tour</span>
               </a>
             </motion.div>
           </motion.div>
@@ -464,19 +464,19 @@ const Home = () => {
             <p className="text-xl mb-10 text-white/90 max-w-2xl mx-auto">
               Join thousands of satisfied families who transformed their dreams into reality with Yug Properties
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center w-full px-4 sm:px-0">
-              <Link to="/signup" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-[220px] h-[56px] bg-white text-primary hover:bg-white/90 shadow-2xl px-8 py-4 text-lg font-semibold rounded-full hover:scale-105 transition-all whitespace-nowrap">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-xl mx-auto">
+              <Link to="/signup" className="w-full sm:w-auto sm:flex-1">
+                <Button size="lg" className="w-full h-14 bg-white text-primary hover:bg-white/90 shadow-2xl px-8 text-lg font-semibold rounded-full hover:scale-105 transition-all">
                   Get Started Now
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <a 
                 href="tel:+918805117788" 
-                className="w-full sm:w-[220px] h-[56px] inline-flex items-center justify-center border-2 border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-4 text-lg font-semibold rounded-full hover:scale-105 transition-all whitespace-nowrap"
+                className="w-full sm:w-auto sm:flex-1 h-14 inline-flex items-center justify-center gap-2 border-2 border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 text-lg font-semibold rounded-full hover:scale-105 transition-all"
               >
-                <Phone className="mr-2 w-5 h-5" />
-                Talk to an Expert
+                <Phone className="w-5 h-5" />
+                <span>Talk to an Expert</span>
               </a>
             </div>
           </motion.div>
