@@ -554,12 +554,16 @@ const PropertyDetails = () => {
                   <iframe
                     src={(() => {
                       const url = property.video_tour_url;
-                      // Handle YouTube URLs
+                      // Handle YouTube URLs (including Shorts)
                       if (url.includes('youtube.com/watch')) {
                         const videoId = url.split('v=')[1]?.split('&')[0];
                         return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
                       } else if (url.includes('youtu.be/')) {
                         const videoId = url.split('youtu.be/')[1]?.split('?')[0];
+                        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+                      } else if (url.includes('youtube.com/shorts/')) {
+                        // Handle YouTube Shorts - convert to regular embed
+                        const videoId = url.split('shorts/')[1]?.split('?')[0];
                         return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
                       } else if (url.includes('youtube.com/embed/')) {
                         return url;
