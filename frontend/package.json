@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && echo '/* /index.html 200' > build/_redirects",
+    "build": "react-scripts build && node scripts/copy-redirects.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "install:legacy": "npm install --legacy-peer-deps"
