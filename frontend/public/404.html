@@ -3,34 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yug Properties</title>
+  <title>Redirecting...</title>
   <style>
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; }
-    .loader { display: flex; justify-content: center; align-items: center; height: 100vh; }
-    .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #FF8C00; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    body { 
+      margin: 0; 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .loader { 
+      display: flex; 
+      flex-direction: column;
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+      color: white;
+    }
+    .spinner { 
+      border: 4px solid rgba(255, 255, 255, 0.3); 
+      border-top: 4px solid #FF8C00; 
+      border-radius: 50%; 
+      width: 50px; 
+      height: 50px; 
+      animation: spin 1s linear infinite; 
+      margin-bottom: 20px;
+    }
+    @keyframes spin { 
+      0% { transform: rotate(0deg); } 
+      100% { transform: rotate(360deg); } 
+    }
+    .text {
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 10px;
+    }
   </style>
-  <script>
-    // Single Page Application fallback for 404 errors
-    (function() {
-      var path = window.location.pathname;
-      if (path !== '/' && !path.match(/\.\w+$/)) {
-        // Not the home page and not a file (no extension)
-        // Redirect to home with path as hash
-        var hash = '#!' + path;
-        window.location.replace('/' + hash + window.location.search);
-      }
-    })();
-  </script>
 </head>
 <body>
   <div class="loader">
     <div class="spinner"></div>
+    <div class="text">Loading page...</div>
   </div>
   <script>
-    setTimeout(function() {
-      window.location.href = '/';
-    }, 3000);
+    // Redirect to the same path but let React handle routing
+    (function() {
+      var pathSegmentsToKeep = 0;
+      var location = window.location;
+      
+      // Store the path in sessionStorage
+      sessionStorage.setItem('redirectPath', location.pathname + location.search + location.hash);
+      
+      // Redirect to index.html with the path stored
+      var redirect = location.protocol + '//' + location.hostname + 
+                     (location.port ? ':' + location.port : '') + 
+                     '/' + 
+                     '?redirect=' + encodeURIComponent(location.pathname);
+      
+      window.location.replace(redirect);
+    })();
   </script>
 </body>
 </html>
