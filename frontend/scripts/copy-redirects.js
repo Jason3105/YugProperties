@@ -24,6 +24,14 @@ try {
     console.log('✅ _headers file copied to build directory');
   }
 
+  // Copy 404.html file if it exists
+  const notFoundSource = path.join(publicDir, '404.html');
+  const notFoundDest = path.join(buildDir, '404.html');
+  if (fs.existsSync(notFoundSource)) {
+    fs.copyFileSync(notFoundSource, notFoundDest);
+    console.log('✅ 404.html file copied to build directory');
+  }
+
   console.log('✅ Render configuration files copied successfully');
 } catch (error) {
   console.error('❌ Error copying files:', error);
