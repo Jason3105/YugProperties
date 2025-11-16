@@ -20,8 +20,8 @@ import Home from './pages/Home';
 // WWW Redirect Component
 const WWWRedirect = ({ children }) => {
   useEffect(() => {
-    if (window.location.hostname === 'www.yugproperties.co.in' || window.location.hostname === 'yugproperties.co.in') {
-      // Only redirect once to avoid loops
+    // Only redirect if on www subdomain, not on non-www
+    if (window.location.hostname === 'www.yugproperties.co.in') {
       const newUrl = 'https://yugproperties.co.in' + window.location.pathname + window.location.search;
       window.location.replace(newUrl);
     }
