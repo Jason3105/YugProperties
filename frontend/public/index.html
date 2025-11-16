@@ -25,6 +25,7 @@
     <meta name="description" content="Find your dream home in Mumbai with Yug Properties. Explore premium residential & commercial properties in Virar, Vasai, Nallasopara & across Mumbai. Expert real estate services, verified listings, and trusted property consultants." />
     <meta name="keywords" content="real estate Mumbai, properties in Virar, flats in Mumbai, villas in Vasai, real estate Nallasopara, property dealers Mumbai, buy property Mumbai, rent property Mumbai, commercial property Mumbai, residential flats Mumbai, 1BHK 2BHK 3BHK Mumbai, Yug Properties, property consultants Mumbai" />
     <meta name="author" content="Yug Properties" />
+    <meta name="application-name" content="Yug Properties" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
     <meta name="bingbot" content="index, follow" />
@@ -35,16 +36,13 @@
     <meta name="geo.position" content="19.0760;72.8777" />
     <meta name="ICBM" content="19.0760, 72.8777" />
     
-    <!-- Google Site Verification -->
-    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
-    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.yugproperties.co.in/" />
+    <meta property="og:url" content="https://yugproperties.co.in/" />
     <meta property="og:title" content="Yug Properties - Premium Real Estate in Mumbai | Flats, Villas & Commercial Properties" />
     <meta property="og:description" content="Find your dream home in Mumbai with Yug Properties. Explore premium residential & commercial properties in Virar, Vasai, Nallasopara & across Mumbai." />
-    <meta property="og:image" content="https://www.yugproperties.co.in/og-image.png" />
-    <meta property="og:image:secure_url" content="https://www.yugproperties.co.in/og-image.png" />
+    <meta property="og:image" content="https://yugproperties.co.in/og-image.png" />
+    <meta property="og:image:secure_url" content="https://yugproperties.co.in/og-image.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -54,10 +52,10 @@
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.yugproperties.co.in/" />
+    <meta property="twitter:url" content="https://yugproperties.co.in/" />
     <meta property="twitter:title" content="Yug Properties - Premium Real Estate in Mumbai" />
     <meta property="twitter:description" content="Find your dream home in Mumbai with Yug Properties. Expert real estate services, verified listings, and trusted property consultants." />
-    <meta property="twitter:image" content="https://www.yugproperties.co.in/og-image.png" />
+    <meta property="twitter:image" content="https://yugproperties.co.in/og-image.png" />
     <meta property="twitter:image:alt" content="Yug Properties - Premium Real Estate in Mumbai" />
     
     <!-- Contact & Business Info -->
@@ -66,7 +64,11 @@
     <meta name="coverage" content="Mumbai, Virar, Vasai, Nallasopara, Maharashtra, India" />
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.yugproperties.co.in/" />
+    <link rel="canonical" href="https://yugproperties.co.in/" />
+    
+    <!-- Alternate Language Tags (optional for future multilingual support) -->
+    <link rel="alternate" hreflang="en-IN" href="https://yugproperties.co.in/" />
+    <link rel="alternate" hreflang="x-default" href="https://yugproperties.co.in/" />
     
     <!-- Favicon & Icons -->
     <link rel="icon" href="%PUBLIC_URL%/favicon-16x16.ico" sizes="16x16" type="image/x-icon" />
@@ -105,16 +107,17 @@
     <!-- DNS Prefetch -->
     <link rel="dns-prefetch" href="https://storage.googleapis.com" />
     
-    <!-- Schema.org Structured Data -->
+    <!-- Schema.org Structured Data - Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "RealEstateAgent",
       "name": "Yug Properties",
+      "alternateName": "Yug Properties Mumbai",
       "description": "Premium real estate services in Mumbai, offering residential and commercial properties across Virar, Vasai, and Nallasopara.",
-      "url": "https://www.yugproperties.co.in",
-      "logo": "https://www.yugproperties.co.in/logo.png",
-      "image": "https://www.yugproperties.co.in/og-image.png",
+      "url": "https://yugproperties.co.in",
+      "logo": "https://yugproperties.co.in/logo.png",
+      "image": "https://yugproperties.co.in/og-image.png",
       "telephone": "+91-8805117788",
       "email": "contact@yugproperties.co.in",
       "address": {
@@ -160,6 +163,33 @@
         "https://www.instagram.com/yugproperties",
         "https://www.linkedin.com/company/yugproperties"
       ]
+    }
+    </script>
+    
+    <!-- Schema.org Structured Data - WebSite with SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Yug Properties",
+      "alternateName": "Yug Properties - Premium Real Estate Mumbai",
+      "url": "https://yugproperties.co.in",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Yug Properties",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yugproperties.co.in/logo.png"
+        }
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://yugproperties.co.in/properties?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
   </head>

@@ -46,9 +46,17 @@ const SEO = ({
       
       {/* Schema.org JSON-LD */}
       {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
+        Array.isArray(schema) ? (
+          schema.map((s, index) => (
+            <script key={index} type="application/ld+json">
+              {JSON.stringify(s)}
+            </script>
+          ))
+        ) : (
+          <script type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        )
       )}
     </Helmet>
   );

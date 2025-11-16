@@ -20,7 +20,7 @@ import Home from './pages/Home';
 // WWW Redirect Component
 const WWWRedirect = ({ children }) => {
   useEffect(() => {
-    if (window.location.hostname === 'www.yugproperties.co.in') {
+    if (window.location.hostname === 'www.yugproperties.co.in' || window.location.hostname === 'yugproperties.co.in') {
       // Only redirect once to avoid loops
       const newUrl = 'https://yugproperties.co.in' + window.location.pathname + window.location.search;
       window.location.replace(newUrl);

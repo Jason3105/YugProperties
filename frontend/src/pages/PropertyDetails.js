@@ -6,6 +6,8 @@ import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
 import { useAuth } from '../context/AuthContext';
 import LoadingScreen from '../components/LoadingScreen';
+import SEO from '../components/SEO';
+import config from '../config';
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -280,9 +282,91 @@ const PropertyDetails = () => {
 
   const images = property.images && Array.isArray(property.images) ? property.images : [];
 
+  // Generate SEO-optimized data
+  const formatPriceForSEO = (price) => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0
+    }).format(price);
+  };
+
+  const propertySchema = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": property.title,
+    "description": property.description,
+    "url": `${config.SITE_URL}/properties/${property.id}`,
+    "image": images.length > 0 ? images : [`${config.SITE_URL}/og-image.png`],
+    "offers": {
+      "@type": "Offer",
+      "price": property.price,
+      "priceCurrency": "INR",
+      "availability": property.status === 'active' ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": property.address || '',
+      "addressLocality": property.city,
+      "addressRegion": "Maharashtra",
+      "postalCode": property.zip_code || '',
+      "addressCountry": "IN"
+    },
+    "numberOfRooms": property.bedrooms,
+    "numberOfBathroomsTotal": property.bathrooms,
+    "floorSize": {
+      "@type": "QuantitativeValue",
+      "value": property.area_sqft,
+      "unitCode": "FTK"
+    },
+    ...(property.latitude && property.longitude && {
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": property.latitude,
+        "longitude": property.longitude
+      }
+    })
+  };
+
+  // Breadcrumb Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": config.SITE_URL
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Properties",
+        "item": `${config.SITE_URL}/properties`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": property.title
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen bg-background pt-20">
-      <div className="container mx-auto px-4 py-8">
+    <>
+      <SEO
+        title={`${property.title} | ${property.bedrooms}BHK ${property.property_type} in ${property.city} | Yug Properties`}
+        description={`${property.bedrooms}BHK ${property.property_type} for ${property.listing_type} in ${property.city}, ${property.area_sqft} sqft at ${formatPriceForSEO(property.price)}. ${property.description?.slice(0, 150) || ''}`}
+        keywords={`${property.bedrooms}BHK ${property.city}, ${property.property_type} ${property.city}, property for ${property.listing_type} ${property.city}, ${property.listing_type} flat ${property.city}, real estate ${property.city}`}
+        canonical={`${config.SITE_URL}/properties/${property.id}`}
+        image={images.length > 0 ? images[0] : undefined}
+        type="product"
+        schema={[propertySchema, breadcrumbSchema]}
+      />
+      <div className="min-h-screen bg-background pt-20">
+        <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
         <Button
           variant="ghost"
@@ -695,6 +779,7 @@ const PropertyDetails = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

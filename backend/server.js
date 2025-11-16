@@ -55,7 +55,6 @@ const corsOptions = {
     ? [
         process.env.FRONTEND_URL, 
         'https://yugproperties.co.in',
-        'https://www.yugproperties.co.in',
         'https://yug-properties-frontend.onrender.com'
       ] // Production domains
     : ['http://localhost:3000', 'http://localhost:3001'], // Development URLs
