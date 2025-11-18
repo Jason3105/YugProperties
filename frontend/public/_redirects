@@ -1,1 +1,5 @@
+# Redirect www to non-www
+https://www.yugproperties.co.in/*    https://yugproperties.co.in/:splat    301!
+
+# SPA fallback - serve index.html for all routes
 /*    /index.html    200

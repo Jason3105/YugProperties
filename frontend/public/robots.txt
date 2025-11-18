@@ -4,19 +4,19 @@
 # Allow all search engines
 User-agent: *
 Allow: /
+Allow: /properties
+Allow: /properties/*
 Disallow: /admin/
-Disallow: /dashboard
+Disallow: /admin/*
 Disallow: /profile
 Disallow: /notes
-Disallow: /login
-Disallow: /signup
-Disallow: /api/
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
 
 # Sitemaps
 Sitemap: https://yugproperties.co.in/sitemap.xml
+Sitemap: https://api.yugproperties.co.in/sitemap.xml
 
 # Specific rules for major search engines
 User-agent: Googlebot

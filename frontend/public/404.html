@@ -3,7 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Redirecting...</title>
+  <meta name="robots" content="noindex, nofollow">
+  <title>404 - Page Not Found | Yug Properties</title>
+  <meta name="description" content="The page you are looking for could not be found. Return to Yug Properties homepage to explore premium real estate in Mumbai.">
+  <link rel="canonical" href="https://yugproperties.co.in/">
   <script>
     // Apply theme before page renders to prevent flash
     (function() {
@@ -17,47 +20,39 @@
     })();
   </script>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body { 
-      margin: 0; 
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; 
       background: #ffffff;
       transition: background-color 0.2s;
+      color: #1a1a1a;
     }
     .dark body {
       background: #0a0a0a;
+      color: #ffffff;
     }
-    .loader { 
+    .container { 
       display: flex; 
       flex-direction: column;
       justify-content: center; 
       align-items: center; 
-      height: 100vh;
+      min-height: 100vh;
+      padding: 24px;
+      text-align: center;
     }
     .logo-container {
-      position: relative;
-      margin-bottom: 24px;
-    }
-    .ping-effect {
-      position: absolute;
-      inset: 0;
-      animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-      opacity: 0.2;
-    }
-    .ping-circle {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto;
-      border-radius: 50%;
-      background: linear-gradient(to right, #f97316, #ea580c);
+      margin-bottom: 32px;
     }
     .logo {
       width: 80px;
       height: 80px;
       object-fit: contain;
-      margin: 0 auto;
-      position: relative;
-      z-index: 10;
-      animation: bounce 1.5s infinite;
+      margin: 0 auto 16px;
+      animation: float 3s ease-in-out infinite;
     }
     .brand-text {
       font-size: 24px;
@@ -66,93 +61,96 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 12px;
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
-    .loading-text {
-      font-size: 14px;
-      color: #6b7280;
+    .error-code {
+      font-size: 120px;
+      font-weight: bold;
+      background: linear-gradient(to right, #f97316, #ea580c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
       margin-bottom: 16px;
     }
-    .dark .loading-text {
+    h1 {
+      font-size: 32px;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+    .dark h1 {
+      color: #ffffff;
+    }
+    p {
+      font-size: 16px;
+      color: #6b7280;
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+    .dark p {
       color: #9ca3af;
     }
-    .loading-dots {
+    .button-group {
       display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      gap: 4px;
     }
-    .dot {
-      width: 8px;
-      height: 8px;
-      background-color: #f97316;
-      border-radius: 50%;
-      animation: bounce 1.5s infinite;
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: inline-block;
     }
-    .dot:nth-child(2) {
-      animation-delay: 0.15s;
+    .btn-primary {
+      background: linear-gradient(to right, #f97316, #ea580c);
+      color: white;
     }
-    .dot:nth-child(3) {
-      animation-delay: 0.3s;
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
     }
-    @keyframes ping {
-      75%, 100% {
-        transform: scale(1.5);
-        opacity: 0;
-      }
+    .btn-secondary {
+      border: 2px solid #f97316;
+      color: #f97316;
+      background: transparent;
     }
-    @keyframes bounce {
+    .btn-secondary:hover {
+      background: #f973161a;
+    }
+    .dark .btn-secondary {
+      border-color: #f97316;
+      color: #f97316;
+    }
+    @keyframes float {
       0%, 100% {
         transform: translateY(0);
       }
       50% {
-        transform: translateY(-15px);
-      }
-    }
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.5;
+        transform: translateY(-10px);
       }
     }
   </style>
 </head>
 <body>
-  <div class="loader">
+  <div class="container">
     <div class="logo-container">
-      <div class="ping-effect">
-        <div class="ping-circle"></div>
-      </div>
-      <img src="/logo.png" alt="Yug Properties" class="logo" />
+      <img src="/logo.png" alt="Yug Properties" class="logo" onerror="this.style.display='none'" />
+      <h2 class="brand-text">Yug Properties</h2>
     </div>
-    <h2 class="brand-text">Yug Properties</h2>
-    <p class="loading-text">Loading page...</p>
-    <div class="loading-dots">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+    
+    <div class="error-code">404</div>
+    <h1>Page Not Found</h1>
+    <p>
+      The page you are looking for doesn't exist or has been moved. 
+      Let's get you back on track to finding your dream property.
+    </p>
+    
+    <div class="button-group">
+      <a href="/" class="btn btn-primary">Go to Homepage</a>
+      <a href="/properties" class="btn btn-secondary">Browse Properties</a>
     </div>
   </div>
-  <script>
-    // Redirect to the same path but let React handle routing
-    (function() {
-      var pathSegmentsToKeep = 0;
-      var location = window.location;
-      
-      // Store the path in sessionStorage
-      sessionStorage.setItem('redirectPath', location.pathname + location.search + location.hash);
-      
-      // Redirect to index.html with the path stored
-      var redirect = location.protocol + '//' + location.hostname + 
-                     (location.port ? ':' + location.port : '') + 
-                     '/' + 
-                     '?redirect=' + encodeURIComponent(location.pathname);
-      
-      window.location.replace(redirect);
-    })();
-  </script>
 </body>
 </html>

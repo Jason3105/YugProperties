@@ -12,8 +12,6 @@ router.get('/sitemap.xml', async (req, res) => {
     const staticPages = [
       { url: '', changefreq: 'daily', priority: '1.0' },
       { url: '/properties', changefreq: 'daily', priority: '0.9' },
-      { url: '/login', changefreq: 'monthly', priority: '0.5' },
-      { url: '/signup', changefreq: 'monthly', priority: '0.5' },
     ];
     
     // Get all properties
