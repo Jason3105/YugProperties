@@ -1,10 +1,4 @@
 [[redirects]]
-  from = "https://www.yugproperties.co.in/*"
-  to = "https://yugproperties.co.in/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
