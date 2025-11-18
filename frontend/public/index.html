@@ -3,17 +3,6 @@
   <head>
     <meta charset="utf-8" />
     
-    <!-- SPA Routing Redirect Handler -->
-    <script>
-      (function() {
-        var redirect = sessionStorage.getItem('redirectPath');
-        if (redirect) {
-          sessionStorage.removeItem('redirectPath');
-          history.replaceState(null, null, redirect);
-        }
-      })();
-    </script>
-    
     <!-- Basic Meta Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="theme-color" content="#FFA500" />
