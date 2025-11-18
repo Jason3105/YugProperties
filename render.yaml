@@ -3,7 +3,7 @@ services:
     name: yug-properties-frontend
     env: static
     buildCommand: cd frontend && npm install --legacy-peer-deps && npm run build
-    staticPublishPath: ./frontend/build
+    staticPublishPath: frontend/build
     headers:
       - path: /*
         name: X-Frame-Options
