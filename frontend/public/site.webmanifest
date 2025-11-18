@@ -1,6 +1,7 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Yug Properties - Premium Real Estate Mumbai",
+  "short_name": "Yug Properties",
+  "description": "Find premium residential and commercial properties across Mumbai",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +16,12 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
+  "theme_color": "#FFA500",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "orientation": "portrait-primary",
+  "categories": ["real-estate", "property", "business"],
+  "lang": "en-IN"
 }

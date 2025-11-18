@@ -26,6 +26,7 @@
     <meta name="keywords" content="real estate Mumbai, properties in Virar, flats in Mumbai, villas in Vasai, real estate Nallasopara, property dealers Mumbai, buy property Mumbai, rent property Mumbai, commercial property Mumbai, residential flats Mumbai, 1BHK 2BHK 3BHK Mumbai, Yug Properties, property consultants Mumbai" />
     <meta name="author" content="Yug Properties" />
     <meta name="application-name" content="Yug Properties" />
+    <meta name="image" content="https://yugproperties.co.in/logo.png" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
     <meta name="bingbot" content="index, follow" />
@@ -70,6 +71,9 @@
     <link rel="alternate" hreflang="en-IN" href="https://yugproperties.co.in/" />
     <link rel="alternate" hreflang="x-default" href="https://yugproperties.co.in/" />
     
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+    
     <!-- Favicon & Icons -->
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="any" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
@@ -111,7 +115,12 @@
       "alternateName": "Yug Properties Mumbai",
       "description": "Premium real estate services in Mumbai, offering residential and commercial properties across Virar, Vasai, and Nallasopara.",
       "url": "https://yugproperties.co.in",
-      "logo": "https://yugproperties.co.in/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://yugproperties.co.in/logo.png",
+        "width": 500,
+        "height": 500
+      },
       "image": "https://yugproperties.co.in/og-image.png",
       "telephone": "+91-8805117788",
       "email": "contact@yugproperties.co.in",
