@@ -32,6 +32,14 @@ try {
     console.log('✅ 404.html file copied to build directory');
   }
 
+  // Copy render.toml file if it exists
+  const renderTomlSource = path.join(publicDir, 'render.toml');
+  const renderTomlDest = path.join(buildDir, 'render.toml');
+  if (fs.existsSync(renderTomlSource)) {
+    fs.copyFileSync(renderTomlSource, renderTomlDest);
+    console.log('✅ render.toml file copied to build directory');
+  }
+
   console.log('✅ Render configuration files copied successfully');
 } catch (error) {
   console.error('❌ Error copying files:', error);

@@ -2,8 +2,18 @@ services:
   - type: web
     name: yug-properties-frontend
     env: static
-    buildCommand: npm install --legacy-peer-deps && npm run build
-    staticPublishPath: ./build
+    buildCommand: cd frontend && npm install --legacy-peer-deps && npm run build
+    staticPublishPath: ./frontend/build
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-XSS-Protection
+        value: 1; mode=block
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
     routes:
       - type: rewrite
         source: /*
