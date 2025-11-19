@@ -29,13 +29,27 @@ export const AuthProvider = ({ children }) => {
 
   const loadUser = async () => {
     try {
-      const response = await axios.get('/api/auth/me');
+      // Add timeout to prevent infinite loading
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Request timeout')), 10000)
+      );
+      
+      const response = await Promise.race([
+        axios.get('/api/auth/me'),
+        timeoutPromise
+      ]);
+      
       if (response.data.success) {
         setUser(response.data.user);
+      } else {
+        throw new Error('Invalid response');
       }
     } catch (error) {
       console.error('Load user error:', error);
-      logout();
+      // Don't logout on network errors, just clear loading state
+      if (error.response?.status === 401) {
+        logout();
+      }
     } finally {
       setLoading(false);
     }
