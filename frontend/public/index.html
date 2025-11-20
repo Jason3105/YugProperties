@@ -188,6 +188,64 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- Loading screen shown immediately while checking for redirects -->
+    <div id="redirect-loader" style="display: none; position: fixed; inset: 0; background: #ffffff; z-index: 9999; align-items: center; justify-content: center;">
+      <div style="text-align: center;">
+        <div style="position: relative; margin-bottom: 24px;">
+          <div style="position: absolute; inset: 0; opacity: 0.2;">
+            <div style="width: 80px; height: 80px; margin: 0 auto; border-radius: 50%; background: linear-gradient(to right, #f97316, #ea580c); animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+          </div>
+          <img src="/logo.png" alt="Yug Properties" style="width: 80px; height: 80px; object-fit: contain; position: relative; z-index: 10; animation: bounce 1.5s infinite;" onerror="this.style.display='none'" />
+        </div>
+        <h2 style="font-size: 1.5rem; font-weight: bold; background: linear-gradient(to right, #f97316, #ea580c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">Yug Properties</h2>
+        <p style="color: #6b7280; font-size: 0.875rem;">Loading...</p>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 4px; margin-top: 16px;">
+          <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; animation: bounce 1s infinite;" data-delay="0"></div>
+          <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; animation: bounce 1s infinite;" data-delay="150"></div>
+          <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; animation: bounce 1s infinite;" data-delay="300"></div>
+        </div>
+      </div>
+    </div>
+    
+    <style>
+      @keyframes ping {
+        75%, 100% { transform: scale(2); opacity: 0; }
+      }
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+      [data-delay="0"] { animation-delay: 0ms; }
+      [data-delay="150"] { animation-delay: 150ms; }
+      [data-delay="300"] { animation-delay: 300ms; }
+      
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) {
+        #redirect-loader { background: #0a0a0a; }
+        #redirect-loader p { color: #9ca3af; }
+      }
+    </style>
+    
+    <script>
+      // Check for redirect path IMMEDIATELY before anything else loads
+      (function() {
+        var redirectPath = sessionStorage.getItem('redirectPath');
+        if (redirectPath) {
+          // Show loading screen
+          var loader = document.getElementById('redirect-loader');
+          if (loader) {
+            loader.style.display = 'flex';
+          }
+          // Don't remove redirectPath yet - let React handle navigation
+        }
+      })();
+    </script>
+    
     <div id="root"></div>
     <!--
       This HTML file is a template.

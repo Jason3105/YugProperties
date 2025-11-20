@@ -26,7 +26,16 @@ const RedirectHandler = () => {
     const redirectPath = sessionStorage.getItem('redirectPath');
     if (redirectPath) {
       sessionStorage.removeItem('redirectPath');
+      // Navigate to the stored path
       navigate(redirectPath, { replace: true });
+      
+      // Hide the redirect loader after navigation
+      setTimeout(() => {
+        const loader = document.getElementById('redirect-loader');
+        if (loader) {
+          loader.style.display = 'none';
+        }
+      }, 100);
     }
   }, [navigate]);
 
