@@ -1,19 +1,11 @@
 # Yug Properties - Premium Real Estate Mumbai
 # https://www.robotstxt.org/robotstxt.html
 
-# Allow all search engines
+# Only allow homepage for now until SPA routing is fixed
+# All other pages are accessible via client-side navigation
 User-agent: *
-Allow: /
-Allow: /properties
-Allow: /properties/*
-Disallow: /admin/
-Disallow: /admin/*
-Disallow: /profile
-Disallow: /notes
-
-# Crawl-delay for polite crawling
-Crawl-delay: 1
+Allow: /$
+Disallow: /
 
 # Sitemaps
 Sitemap: https://yugproperties.co.in/sitemap.xml
-Sitemap: https://api.yugproperties.co.in/sitemap.xml
