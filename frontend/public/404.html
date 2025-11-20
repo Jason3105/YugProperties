@@ -8,6 +8,18 @@
   <meta name="description" content="The page you are looking for could not be found. Return to Yug Properties homepage to explore premium real estate in Mumbai.">
   <link rel="canonical" href="https://yugproperties.co.in/">
   <script>
+    // Immediately redirect before page renders
+    (function() {
+      var path = window.location.pathname;
+      if (path !== '/' && path !== '/404.html') {
+        // Store the original path in sessionStorage
+        sessionStorage.setItem('redirectPath', path + window.location.search);
+        // Redirect to homepage immediately
+        window.location.replace('/');
+      }
+    })();
+  </script>
+  <script>
     // Apply theme before page renders to prevent flash
     (function() {
       var theme = localStorage.getItem('theme');
@@ -152,19 +164,5 @@
       <a href="/properties" class="btn btn-secondary">Browse Properties</a>
     </div>
   </div>
-  
-  <script>
-    // Redirect to homepage but let React Router handle the path
-    // Store the intended path and redirect to root
-    (function() {
-      var path = window.location.pathname;
-      if (path !== '/' && path !== '/404.html') {
-        // Store the original path in sessionStorage
-        sessionStorage.setItem('redirectPath', path + window.location.search);
-        // Redirect to homepage immediately
-        window.location.replace('/');
-      }
-    })();
-  </script>
 </body>
 </html>
