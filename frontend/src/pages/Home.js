@@ -113,24 +113,130 @@ const Home = () => {
   ];
 
   // Structured data for home page
-  const homeSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Yug Properties",
-    "url": "https://yugproperties.co.in",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://yugproperties.co.in/properties?search={search_term_string}",
-      "query-input": "required name=search_term_string"
+  const homeSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Yug Properties",
+      "description": "Premium real estate agents specializing in residential and commercial properties in Virar, Vasai, Nallasopara, and Mumbai suburbs",
+      "url": "https://yugproperties.co.in",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://yugproperties.co.in/logo.png",
+        "width": 500,
+        "height": 500
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://yugproperties.co.in/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "telephone": "+91-8805117788",
+      "email": "subhash@yugproperties.co.in",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Virar West",
+        "addressLocality": "Virar",
+        "addressRegion": "Mumbai",
+        "postalCode": "401303",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "19.4559",
+        "longitude": "72.7980"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Virar"
+        },
+        {
+          "@type": "City",
+          "name": "Vasai"
+        },
+        {
+          "@type": "City",
+          "name": "Nallasopara"
+        },
+        {
+          "@type": "City",
+          "name": "Mumbai"
+        }
+      ],
+      "priceRange": "₹₹₹",
+      "sameAs": [
+        "https://www.facebook.com/yugproperties",
+        "https://www.instagram.com/yugproperties"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Yug Properties",
+      "url": "https://yugproperties.co.in",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://yugproperties.co.in/properties?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Yug Properties",
+      "alternateName": "Yug Virar Properties",
+      "url": "https://yugproperties.co.in",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://yugproperties.co.in/logo.png",
+        "width": 500,
+        "height": 500
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://yugproperties.co.in/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-8805117788",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": ["en", "hi", "mr"]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://yugproperties.co.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Properties",
+          "item": "https://yugproperties.co.in/properties"
+        }
+      ]
     }
-  };
+  ];
 
   return (
     <div className="min-h-screen bg-background">
       <SEO 
         title="Yug Properties - Premium Real Estate in Mumbai | Buy, Sell & Rent Properties in Virar, Vasai, Nallasopara"
         description="Discover premium residential and commercial properties across Mumbai. Expert real estate services in Virar, Vasai, Nallasopara. Find 1BHK, 2BHK, 3BHK flats, villas, plots. ✓ Verified Listings ✓ Best Prices ✓ Trusted Consultants. Call +91-8805117788"
-        keywords="real estate Mumbai, properties in Virar, flats in Mumbai, villas in Vasai, property for sale Mumbai, property for rent Mumbai, 1BHK Mumbai, 2BHK Mumbai, 3BHK Mumbai, real estate Nallasopara, property dealers Mumbai, buy property Mumbai, commercial property Mumbai, residential flats Mumbai, luxury villas Mumbai, affordable flats Mumbai, property consultants Mumbai, Yug Properties Virar"
+        keywords="yug properties, yug virar properties, yug properties virar, real estate, properties, homes, flats, villas, apartments, luxury properties, premium properties, affordable properties, residential properties, commercial properties, properties in virar, properties in vasai, properties in nallasopara, properties in mumbai, mumbai properties, mumbai suburban properties, mumbai suburbs properties, properties on western line, western railway properties, western line properties, properties in western region, western region properties, western suburbs mumbai, real estate virar, real estate vasai, real estate nallasopara, real estate mumbai, real estate western suburbs, flats in virar, flats in vasai, flats in nallasopara, flats in mumbai, flats for sale mumbai, flats for rent mumbai, villas in virar, villas in vasai, villas in mumbai, luxury villas, premium villas, apartments in virar, apartments in vasai, apartments in mumbai, apartments for sale, apartments for rent, 1bhk mumbai, 1bhk virar, 1bhk vasai, 2bhk mumbai, 2bhk virar, 2bhk vasai, 3bhk mumbai, 3bhk virar, 3bhk vasai, buy property mumbai, buy property virar, buy property vasai, property for sale mumbai, property for sale virar, property for sale vasai, property for rent mumbai, property for rent virar, property for rent vasai, residential flats mumbai, commercial property mumbai, luxury flats mumbai, premium flats, affordable flats mumbai, property dealers virar, property dealers vasai, property dealers mumbai, property consultants mumbai, property consultants virar, real estate agents virar, real estate agents vasai, real estate agents mumbai, property investment mumbai, virar west properties, virar east properties, vasai west properties, vasai east properties, nallasopara east properties, nallasopara west properties, homes in mumbai, homes in virar, homes in vasai, dream home, new properties, upcoming projects, ready possession, under construction, property search, find property, property listings, verified properties, best properties, top properties, property broker, property agent, flat broker, real estate broker, property website, real estate website, mumbai real estate, virar real estate, vasai real estate, western line real estate, western suburbs real estate"
         image="/og-image.jpg"
         schema={homeSchema}
       />
@@ -158,7 +264,7 @@ const Home = () => {
             <motion.div variants={fadeInUp}>
               <Badge className="mb-6 bg-white/20 text-white border-white/30 backdrop-blur-md px-6 py-2 text-sm">
                 <Sparkles className="w-4 h-4 inline mr-2" />
-                Premium Real Estate in Virar
+                Premium Properties in Virar, Vasai & Nallasopara
               </Badge>
             </motion.div>
             
@@ -166,10 +272,10 @@ const Home = () => {
               variants={fadeInUp}
               className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
             >
-              Your Dream Home
+              Find Your Dream
               <br />
               <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-amber-500 bg-clip-text text-transparent">
-                Awaits You
+                Home in Mumbai
               </span>
             </motion.h1>
             
@@ -177,8 +283,8 @@ const Home = () => {
               variants={fadeInUp}
               className="text-xl md:text-2xl mb-12 text-white/90 max-w-3xl mx-auto font-light"
             >
-              Discover exceptional properties curated for discerning tastes.
-              Where luxury meets comfort, and dreams become addresses.
+              Discover luxury flats, villas & apartments on Mumbai's Western Line.
+              Your trusted real estate partner for properties in Virar, Vasai, Nallasopara & beyond.
             </motion.p>
             
             <motion.div 
@@ -486,6 +592,38 @@ const Home = () => {
       {/* Footer - Premium & Organized */}
       <footer className="bg-card border-t border-border">
         <div className="container mx-auto px-4 py-16">
+          {/* SEO Content Section - Hidden but crawlable */}
+          <div className="mb-12 text-sm text-muted-foreground leading-relaxed max-w-5xl">
+            <h2 className="text-lg font-bold text-foreground mb-4">
+              Premium Real Estate in Virar, Vasai, Nallasopara & Mumbai - Yug Properties
+            </h2>
+            <p className="mb-3">
+              <strong>Yug Properties</strong> is your trusted partner for finding premium <strong>flats</strong>, <strong>villas</strong>, 
+              and <strong>apartments</strong> in <strong>Virar</strong>, <strong>Vasai</strong>, <strong>Nallasopara</strong>, and across 
+              <strong> Mumbai suburbs</strong>. We specialize in <strong>luxury properties</strong> and <strong>affordable homes</strong> on 
+              the <strong>Western Railway line</strong>, serving the entire <strong>western region of Mumbai</strong>.
+            </p>
+            <p className="mb-3">
+              Looking for <strong>properties in Virar</strong>? Our extensive portfolio includes <strong>1BHK</strong>, <strong>2BHK</strong>, 
+              and <strong>3BHK flats</strong> in prime locations. We also offer <strong>premium villas in Vasai</strong>, 
+              <strong> luxury apartments in Nallasopara</strong>, and <strong>residential properties across Mumbai</strong>. 
+              Whether you're searching for <strong>property for sale</strong> or <strong>property for rent</strong>, 
+              <strong> Yug Virar Properties</strong> has the perfect <strong>home</strong> waiting for you.
+            </p>
+            <p className="mb-3">
+              Our <strong>real estate</strong> services cover all major areas including <strong>Virar West</strong>, <strong>Virar East</strong>, 
+              <strong> Vasai West</strong>, <strong>Vasai East</strong>, <strong>Nallasopara East</strong>, <strong>Nallasopara West</strong>, 
+              and other <strong>Mumbai suburban areas</strong>. We are among the leading <strong>property dealers in Mumbai</strong> and 
+              top <strong>real estate agents in Virar</strong>.
+            </p>
+            <p>
+              Find your dream <strong>flat</strong>, <strong>villa</strong>, or <strong>apartment</strong> with expert guidance. 
+              Explore <strong>properties on the western line</strong>, discover <strong>luxury properties in western region</strong>, 
+              and invest in <strong>premium real estate in Mumbai</strong>. Contact <strong>Yug Properties</strong> today at 
+              <strong> +91-8805117788</strong> for the best <strong>property deals in Virar, Vasai, Nallasopara and Mumbai</strong>.
+            </p>
+          </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             {/* Brand Column */}
             <div className="lg:col-span-1">
