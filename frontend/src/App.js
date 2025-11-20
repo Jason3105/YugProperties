@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
@@ -16,6 +16,22 @@ import EditProperty from './pages/EditProperty';
 import Properties from './pages/Properties';
 import PropertyDetails from './pages/PropertyDetails';
 import Home from './pages/Home';
+
+// Redirect Handler Component
+const RedirectHandler = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if there's a stored redirect path from 404
+    const redirectPath = sessionStorage.getItem('redirectPath');
+    if (redirectPath) {
+      sessionStorage.removeItem('redirectPath');
+      navigate(redirectPath, { replace: true });
+    }
+  }, [navigate]);
+
+  return null;
+};
 
 // WWW Redirect Component
 const WWWRedirect = ({ children }) => {
@@ -75,6 +91,7 @@ function App() {
       <ThemeProvider>
         <AuthProvider>
           <Router>
+            <RedirectHandler />
             <div className="App">
               <Navbar />
               <Routes>

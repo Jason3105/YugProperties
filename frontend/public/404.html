@@ -154,11 +154,15 @@
   </div>
   
   <script>
-    // Redirect to homepage with original path in hash
+    // Redirect to homepage but let React Router handle the path
+    // Store the intended path and redirect to root
     (function() {
       var path = window.location.pathname;
       if (path !== '/' && path !== '/404.html') {
-        window.location.replace('/#!' + path);
+        // Store the original path in sessionStorage
+        sessionStorage.setItem('redirectPath', path + window.location.search);
+        // Redirect to homepage immediately
+        window.location.replace('/');
       }
     })();
   </script>
