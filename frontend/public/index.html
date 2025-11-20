@@ -192,42 +192,70 @@
     <!-- Loading screen shown immediately while checking for redirects -->
     <div id="redirect-loader" style="display: none; position: fixed; inset: 0; background: #ffffff; z-index: 9999; align-items: center; justify-content: center;">
       <div style="text-align: center;">
+        <!-- Logo with pulse animation -->
         <div style="position: relative; margin-bottom: 24px;">
           <div style="position: absolute; inset: 0; opacity: 0.2;">
             <div style="width: 80px; height: 80px; margin: 0 auto; border-radius: 50%; background: linear-gradient(to right, #f97316, #ea580c); animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
           </div>
-          <img src="/logo.png" alt="Yug Properties" style="width: 80px; height: 80px; object-fit: contain; position: relative; z-index: 10; animation: bounce 1.5s infinite;" onerror="this.style.display='none'" />
+          <img 
+            src="/logo.png" 
+            alt="Yug Properties" 
+            style="width: 80px; height: 80px; object-fit: contain; margin: 0 auto; position: relative; z-index: 10; animation: bounce 1.5s infinite;"
+            onerror="this.style.display='none'"
+          />
         </div>
-        <h2 style="font-size: 1.5rem; font-weight: bold; background: linear-gradient(to right, #f97316, #ea580c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">Yug Properties</h2>
-        <p style="color: #6b7280; font-size: 0.875rem;">Loading...</p>
-        <div style="display: flex; justify-content: center; align-items: center; gap: 4px; margin-top: 16px;">
-          <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; animation: bounce 1s infinite;" data-delay="0"></div>
-          <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; animation: bounce 1s infinite;" data-delay="150"></div>
-          <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; animation: bounce 1s infinite;" data-delay="300"></div>
+        
+        <!-- Brand text with gradient -->
+        <h2 style="font-size: 1.5rem; font-weight: bold; background: linear-gradient(to right, #f97316, #ea580c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+          Yug Properties
+        </h2>
+        
+        <!-- Loading message -->
+        <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 16px;">Loading...</p>
+        
+        <!-- Loading dots animation -->
+        <div style="display: flex; justify-content: center; align-items: center; gap: 4px;">
+          <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; animation: bounce 1s infinite;"></div>
+          <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; animation: bounce 1s infinite; animation-delay: 150ms;"></div>
+          <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; animation: bounce 1s infinite; animation-delay: 300ms;"></div>
         </div>
       </div>
     </div>
     
     <style>
       @keyframes ping {
-        75%, 100% { transform: scale(2); opacity: 0; }
+        75%, 100% { 
+          transform: scale(2); 
+          opacity: 0; 
+        }
       }
       @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
+        0%, 100% { 
+          transform: translateY(0); 
+          animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% { 
+          transform: translateY(-25%); 
+          animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
       }
       @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
+        0%, 100% { 
+          opacity: 1; 
+        }
+        50% { 
+          opacity: 0.5; 
+        }
       }
-      [data-delay="0"] { animation-delay: 0ms; }
-      [data-delay="150"] { animation-delay: 150ms; }
-      [data-delay="300"] { animation-delay: 300ms; }
       
       /* Dark mode support */
       @media (prefers-color-scheme: dark) {
-        #redirect-loader { background: #0a0a0a; }
-        #redirect-loader p { color: #9ca3af; }
+        #redirect-loader { 
+          background: #0a0a0a !important; 
+        }
+        #redirect-loader p { 
+          color: #9ca3af !important; 
+        }
       }
     </style>
     
