@@ -272,10 +272,10 @@ const Home = () => {
               variants={fadeInUp}
               className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
             >
-              Find Your Dream
+              Your Dream Home
               <br />
               <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-amber-500 bg-clip-text text-transparent">
-                Home in Mumbai
+                Awaits You
               </span>
             </motion.h1>
             
@@ -283,8 +283,8 @@ const Home = () => {
               variants={fadeInUp}
               className="text-xl md:text-2xl mb-12 text-white/90 max-w-3xl mx-auto font-light"
             >
-              Discover luxury flats, villas & apartments on Mumbai's Western Line.
-              Your trusted real estate partner for properties in Virar, Vasai, Nallasopara & beyond.
+              Discover exceptional properties curated for discerning tastes.
+              Where luxury meets comfort, and dreams become addresses.
             </motion.p>
             
             <motion.div 
