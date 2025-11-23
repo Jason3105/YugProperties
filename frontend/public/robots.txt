@@ -5,6 +5,12 @@
 # All other pages are accessible via client-side navigation
 User-agent: *
 Allow: /$
+Allow: /sitemap.xml
+Allow: /robots.txt
+Allow: /manifest.json
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.webp$
 Disallow: /
 
 # Sitemaps
