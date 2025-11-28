@@ -1,7 +1,7 @@
 {
   "short_name": "Yug Properties",
-  "name": "Yug Properties - Premium Real Estate Mumbai",
-  "description": "Find premium residential and commercial properties across Mumbai",
+  "name": "Yug Properties - Premium Real Estate in Mumbai, Virar, Vasai & Nallasopara",
+  "description": "🏠 Find your dream home in Mumbai! 500+ premium properties, 1200+ happy families, 15+ years excellence. Expert real estate consultants for flats, villas, apartments in Virar, Vasai, Nallasopara & Mumbai. Buy, Sell, Rent - 100% verified listings.",
   "icons": [
     {
       "src": "favicon-96x96.png",
@@ -32,12 +32,43 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "/",
+  "start_url": "/?utm_source=pwa",
   "display": "standalone",
   "theme_color": "#FFA500",
   "background_color": "#ffffff",
   "orientation": "portrait-primary",
   "scope": "/",
-  "categories": ["real-estate", "property", "business"],
-  "lang": "en-IN"
+  "categories": ["real-estate", "property", "business", "lifestyle"],
+  "lang": "en-IN",
+  "dir": "ltr",
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Browse Properties",
+      "short_name": "Properties",
+      "description": "View all available properties",
+      "url": "/properties",
+      "icons": [
+        {
+          "src": "android-icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch with our experts",
+      "url": "/?contact=true",
+      "icons": [
+        {
+          "src": "android-icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

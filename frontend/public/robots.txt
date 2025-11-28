@@ -1,18 +1,84 @@
 # Yug Properties - Premium Real Estate Mumbai
+# Robots.txt optimized for homepage-only indexing
 # https://www.robotstxt.org/robotstxt.html
+# Updated: 2025-11-28
 
-# Only allow homepage for now until SPA routing is fixed
-# All other pages are accessible via client-side navigation
+# Allow all major search engines to crawl the homepage and static assets
 User-agent: *
+Allow: /
 Allow: /$
-Allow: /sitemap.xml
-Allow: /robots.txt
+Allow: /static/
+Allow: /logo.png
+Allow: /og-image.png
+Allow: /favicon.ico
 Allow: /manifest.json
+Allow: /sitemap.xml
 Allow: /*.png$
 Allow: /*.jpg$
 Allow: /*.webp$
 Allow: /*.ico$
 Allow: /*.svg$
+
+# Block SPA routes that cause 404 errors when accessed directly
+Disallow: /properties
+Disallow: /login
+Disallow: /signup
+Disallow: /profile
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /notes
+Disallow: /wishlist
+Disallow: /api/
+Disallow: /*?*utm_source=
+Disallow: /*?*utm_medium=
+Disallow: /*?*utm_campaign=
+Disallow: /*?*fbclid
+Disallow: /*?*gclid
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# Allow specific bots with optimized settings
+User-agent: Googlebot
+Allow: /
+Allow: /$
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /properties
+Disallow: /login
+Disallow: /signup
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Allow: /$
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /properties
+Disallow: /login
+Disallow: /signup
+
+User-agent: Slurp
+Allow: /
+Allow: /$
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /properties
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: DotBot
 Disallow: /
 
 # Sitemaps

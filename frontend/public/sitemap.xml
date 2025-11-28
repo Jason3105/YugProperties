@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
 
-  <!-- Homepage only until SPA routing is fixed -->
+  <!-- 
+    HOMEPAGE ONLY - Other pages excluded due to React Router SPA 404 issues
+    Only the homepage is indexed until client-side routing is properly configured
+  -->
+  
   <url>
     <loc>https://yugproperties.co.in/</loc>
-    <lastmod>2025-11-20</lastmod>
+    <lastmod>2025-11-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    
+    <!-- Multiple images for rich results -->
+    <image:image>
+      <image:loc>https://yugproperties.co.in/logo.png</image:loc>
+      <image:title>Yug Properties - Premium Real Estate Logo</image:title>
+      <image:caption>Yug Properties - Your Trusted Real Estate Partner in Mumbai, Virar, Vasai, Nallasopara</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://yugproperties.co.in/og-image.png</image:loc>
+      <image:title>Yug Properties Homepage - Premium Properties in Mumbai</image:title>
+      <image:caption>Discover premium residential and commercial properties across Virar, Vasai, Nallasopara and Mumbai with Yug Properties</image:caption>
+    </image:image>
   </url>
 
 </urlset>
