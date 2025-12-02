@@ -273,18 +273,18 @@ const AdminDashboard = () => {
             <CardHeader>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
                 <div className="flex items-center space-x-3">
-                  <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-3 rounded-xl shadow-lg">
-                    <HardDrive className="w-6 h-6" />
+                  <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-2.5 sm:p-3 rounded-xl shadow-lg">
+                    <HardDrive className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <CardTitle className="text-orange-900 dark:text-orange-400 text-lg md:text-xl">Firebase Storage Usage</CardTitle>
-                    <CardDescription className="text-orange-700 dark:text-slate-400 text-sm">
+                    <CardTitle className="text-orange-900 dark:text-orange-400 text-base sm:text-lg md:text-xl">Firebase Storage Usage</CardTitle>
+                    <CardDescription className="text-orange-700 dark:text-slate-400 text-xs sm:text-sm">
                       {storageStats.totalFiles} images • {storageStats.totalSizeGB} GB total
                     </CardDescription>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Badge variant="secondary" className="bg-orange-200 text-orange-900 dark:bg-orange-600 dark:text-white">
+                  <Badge variant="secondary" className="bg-orange-200 text-orange-900 dark:bg-orange-600 dark:text-white text-xs sm:text-sm">
                     {storageStats.totalFiles} Files
                   </Badge>
                 </div>
@@ -293,29 +293,29 @@ const AdminDashboard = () => {
             <CardContent>
               <div className="space-y-4">
                 {/* Storage Details Grid */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-                  <div className="bg-white dark:bg-slate-700 p-4 rounded-xl shadow-sm border border-orange-200 dark:border-slate-600">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+                  <div className="bg-white dark:bg-slate-700 p-3 sm:p-4 rounded-xl shadow-sm border border-orange-200 dark:border-slate-600">
                     <p className="text-xs text-muted-foreground dark:text-slate-400 mb-1">Total Files</p>
-                    <p className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">{storageStats.totalFiles}</p>
+                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">{storageStats.totalFiles}</p>
                   </div>
-                  <div className="bg-white dark:bg-slate-700 p-4 rounded-xl shadow-sm border border-orange-200 dark:border-slate-600">
+                  <div className="bg-white dark:bg-slate-700 p-3 sm:p-4 rounded-xl shadow-sm border border-orange-200 dark:border-slate-600">
                     <p className="text-xs text-muted-foreground dark:text-slate-400 mb-1">Size (MB)</p>
-                    <p className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">{storageStats.totalSizeMB}</p>
+                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">{storageStats.totalSizeMB}</p>
                   </div>
-                  <div className="bg-white dark:bg-slate-700 p-4 rounded-xl shadow-sm border border-orange-200 dark:border-slate-600">
+                  <div className="bg-white dark:bg-slate-700 p-3 sm:p-4 rounded-xl shadow-sm border border-orange-200 dark:border-slate-600">
                     <p className="text-xs text-muted-foreground dark:text-slate-400 mb-1">Size (GB)</p>
-                    <p className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">{storageStats.totalSizeGB}</p>
+                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">{storageStats.totalSizeGB}</p>
                   </div>
-                  <div className="bg-white dark:bg-slate-700 p-4 rounded-xl shadow-sm border border-orange-200 dark:border-slate-600">
+                  <div className="bg-white dark:bg-slate-700 p-3 sm:p-4 rounded-xl shadow-sm border border-orange-200 dark:border-slate-600">
                     <p className="text-xs text-muted-foreground dark:text-slate-400 mb-1">Free Tier</p>
-                    <p className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">{storageStats.freeTierLimitGB} GB</p>
+                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">{storageStats.freeTierLimitGB} GB</p>
                   </div>
                 </div>
 
                 {/* Usage Progress - Only show if within free tier */}
                 {storageStats.totalSizeGB <= storageStats.freeTierLimitGB && (
-                  <div className="bg-white dark:bg-slate-700 p-4 rounded-xl border border-orange-200 dark:border-slate-600">
-                    <div className="flex justify-between text-sm mb-2">
+                  <div className="bg-white dark:bg-slate-700 p-3 sm:p-4 rounded-xl border border-orange-200 dark:border-slate-600">
+                    <div className="flex flex-col sm:flex-row sm:justify-between text-xs sm:text-sm mb-2 gap-1 sm:gap-0">
                       <span className="text-orange-700 dark:text-orange-300 font-medium">
                         Free Tier Usage: {storageStats.totalSizeGB} GB / {storageStats.freeTierLimitGB} GB
                       </span>
@@ -323,7 +323,7 @@ const AdminDashboard = () => {
                         {storageStats.usagePercentage}%
                       </span>
                     </div>
-                    <div className="w-full bg-orange-200 dark:bg-slate-800 rounded-full h-3 overflow-hidden">
+                    <div className="w-full bg-orange-200 dark:bg-slate-800 rounded-full h-2.5 sm:h-3 overflow-hidden">
                       <div 
                         className={`h-full rounded-full transition-all ${
                           storageStats.usagePercentage > 80 
@@ -343,12 +343,12 @@ const AdminDashboard = () => {
 
                 {/* Exceeded free tier message */}
                 {storageStats.totalSizeGB > storageStats.freeTierLimitGB && (
-                  <div className="bg-white dark:bg-slate-700 p-4 rounded-xl border-2 border-blue-500 dark:border-blue-600">
+                  <div className="bg-white dark:bg-slate-700 p-3 sm:p-4 rounded-xl border-2 border-blue-500 dark:border-blue-600">
                     <div className="flex items-start space-x-2">
-                      <Database className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <Database className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-semibold text-blue-900 dark:text-blue-100 mb-1">Paid Tier Active</p>
-                        <p className="text-sm text-blue-800 dark:text-blue-200">
+                        <p className="font-semibold text-sm sm:text-base text-blue-900 dark:text-blue-100 mb-1">Paid Tier Active</p>
+                        <p className="text-xs sm:text-sm text-blue-800 dark:text-blue-200">
                           You're using {storageStats.totalSizeGB} GB, which exceeds the free tier limit of {storageStats.freeTierLimitGB} GB.
                           Paid tier charges apply for {(storageStats.totalSizeGB - storageStats.freeTierLimitGB).toFixed(2)} GB.
                         </p>
@@ -359,9 +359,9 @@ const AdminDashboard = () => {
 
                 {/* Warning Message - only in free tier */}
                 {storageStats.usagePercentage > 80 && storageStats.totalSizeGB <= storageStats.freeTierLimitGB && (
-                  <div className="flex items-start space-x-2 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-xl p-4">
-                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-                    <div className="text-sm text-red-800 dark:text-red-200">
+                  <div className="flex items-start space-x-2 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-xl p-3 sm:p-4">
+                    <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <div className="text-xs sm:text-sm text-red-800 dark:text-red-200">
                       <p className="font-semibold mb-1">Storage Warning</p>
                       <p>You're using {storageStats.usagePercentage}% of your free tier storage. Upgrade to paid tier to continue beyond {storageStats.freeTierLimitGB} GB.</p>
                     </div>
@@ -380,10 +380,10 @@ const AdminDashboard = () => {
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
                   <div>
-                    <CardTitle className="text-lg md:text-xl">Property Management</CardTitle>
-                    <CardDescription className="text-sm">Recent property listings</CardDescription>
+                    <CardTitle className="text-base sm:text-lg md:text-xl">Property Management</CardTitle>
+                    <CardDescription className="text-xs sm:text-sm">Recent property listings</CardDescription>
                   </div>
-                  <Button variant="outline" size="sm" onClick={() => navigate('/properties')}>
+                  <Button variant="outline" size="sm" onClick={() => navigate('/properties')} className="text-xs sm:text-sm">
                     View All
                   </Button>
                 </div>
@@ -534,27 +534,27 @@ const AdminDashboard = () => {
             {/* Quick Actions */}
             <Card className="shadow-lg">
               <CardHeader>
-                <CardTitle className="text-lg md:text-xl">Quick Actions</CardTitle>
+                <CardTitle className="text-base sm:text-lg md:text-xl">Quick Actions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/admin/add-property')}>
-                  <Plus className="w-4 h-4 mr-2" />
+                <Button className="w-full justify-start text-xs sm:text-sm" variant="outline" onClick={() => navigate('/admin/add-property')}>
+                  <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
                   Add New Property
                 </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/properties')}>
-                  <Home className="w-4 h-4 mr-2" />
+                <Button className="w-full justify-start text-xs sm:text-sm" variant="outline" onClick={() => navigate('/properties')}>
+                  <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
                   View All Properties
                 </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/admin/notes')}>
-                  <StickyNote className="w-4 h-4 mr-2" />
+                <Button className="w-full justify-start text-xs sm:text-sm" variant="outline" onClick={() => navigate('/admin/notes')}>
+                  <StickyNote className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
                   Notes
                 </Button>
-                <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/admin/reports')}>
-                  <BarChart3 className="w-4 h-4 mr-2" />
+                <Button className="w-full justify-start text-xs sm:text-sm" variant="outline" onClick={() => navigate('/admin/reports')}>
+                  <BarChart3 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
                   View Reports
                 </Button>
-                <Button className="w-full justify-start" variant="outline">
-                  <Settings className="w-4 h-4 mr-2" />
+                <Button className="w-full justify-start text-xs sm:text-sm" variant="outline">
+                  <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
                   Settings
                 </Button>
               </CardContent>
@@ -563,35 +563,35 @@ const AdminDashboard = () => {
             {/* Recent Users */}
             <Card className="shadow-lg">
               <CardHeader>
-                <CardTitle className="text-lg md:text-xl">Recent Users</CardTitle>
-                <CardDescription className="text-sm">Newest registered users</CardDescription>
+                <CardTitle className="text-base sm:text-lg md:text-xl">Recent Users</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">Newest registered users</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
                 {recentUsersList.length === 0 ? (
                   <div className="text-center py-4">
                     <Users className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                    <p className="text-sm text-muted-foreground">No users yet</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">No users yet</p>
                   </div>
                 ) : (
                   <>
                     {recentUsersList.map((recentUser) => (
-                      <div key={recentUser.id} className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-muted/50 transition-colors">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <Users className="w-5 h-5 text-primary" />
+                      <div key={recentUser.id} className="flex items-center space-x-2 sm:space-x-3 p-2.5 sm:p-3 border rounded-lg hover:bg-muted/50 transition-colors">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <Users className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-sm truncate">{recentUser.name}</p>
-                          <p className="text-xs text-muted-foreground truncate">{recentUser.email}</p>
+                          <p className="font-medium text-xs sm:text-sm truncate">{recentUser.name}</p>
+                          <p className="text-[10px] sm:text-xs text-muted-foreground truncate">{recentUser.email}</p>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <Badge variant="outline" className="text-xs mb-1">{recentUser.role}</Badge>
-                          <p className="text-xs text-muted-foreground hidden sm:block">{formatDate(recentUser.created_at)}</p>
+                          <Badge variant="outline" className="text-[10px] sm:text-xs mb-1">{recentUser.role}</Badge>
+                          <p className="text-[10px] sm:text-xs text-muted-foreground hidden sm:block">{formatDate(recentUser.created_at)}</p>
                         </div>
                       </div>
                     ))}
                     <Button 
                       variant="outline" 
-                      className="w-full mt-2" 
+                      className="w-full mt-2 text-xs sm:text-sm" 
                       size="sm"
                       onClick={() => navigate('/admin/users')}
                     >
@@ -605,20 +605,20 @@ const AdminDashboard = () => {
             {/* System Status */}
             <Card className="shadow-lg">
               <CardHeader>
-                <CardTitle className="text-lg md:text-xl">System Status</CardTitle>
+                <CardTitle className="text-base sm:text-lg md:text-xl">System Status</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center justify-between p-2 rounded-lg bg-green-50 dark:bg-green-950">
-                  <span className="text-sm font-medium">Database</span>
-                  <Badge className="bg-green-500">Healthy</Badge>
+                  <span className="text-xs sm:text-sm font-medium">Database</span>
+                  <Badge className="bg-green-500 text-xs">Healthy</Badge>
                 </div>
                 <div className="flex items-center justify-between p-2 rounded-lg bg-green-50 dark:bg-green-950">
-                  <span className="text-sm font-medium">Server</span>
-                  <Badge className="bg-green-500">Online</Badge>
+                  <span className="text-xs sm:text-sm font-medium">Server</span>
+                  <Badge className="bg-green-500 text-xs">Online</Badge>
                 </div>
                 <div className="flex items-center justify-between p-2 rounded-lg bg-blue-50 dark:bg-blue-950">
-                  <span className="text-sm font-medium">Properties</span>
-                  <Badge className="bg-blue-500">{stats.totalProperties} total</Badge>
+                  <span className="text-xs sm:text-sm font-medium">Properties</span>
+                  <Badge className="bg-blue-500 text-xs">{stats.totalProperties} total</Badge>
                 </div>
               </CardContent>
             </Card>
