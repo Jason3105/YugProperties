@@ -160,11 +160,11 @@ app.listen(PORT, () => {
     const BACKEND_URL = process.env.BACKEND_URL || 'https://api.yugproperties.co.in';
     
     console.log('🔄 Self-ping mechanism activated');
-    console.log(`⏰ Pinging ${BACKEND_URL}/api/properties every 8 minutes`);
+    console.log(`⏰ Pinging ${BACKEND_URL}/api/health every 8 minutes`);
     
     // Self-ping function
     const selfPing = () => {
-      https.get(`${BACKEND_URL}/api/properties`, (res) => {
+      https.get(`${BACKEND_URL}/api/health`, (res) => {
         let data = '';
         res.on('data', (chunk) => { data += chunk; });
         res.on('end', () => {
