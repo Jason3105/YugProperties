@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const https = require('https');
 require('dotenv').config();
 
 const app = express();
@@ -152,4 +153,36 @@ app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
   console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`🔗 API: http://localhost:${PORT}/api`);
+  
+  // Self-ping mechanism to keep server active (only in production)
+  if (process.env.NODE_ENV === 'production') {
+    const SELF_PING_INTERVAL = 8 * 60 * 1000; // 8 minutes
+    const BACKEND_URL = process.env.BACKEND_URL || 'https://api.yugproperties.co.in';
+    
+    console.log('🔄 Self-ping mechanism activated');
+    console.log(`⏰ Pinging ${BACKEND_URL}/api/properties every 8 minutes`);
+    
+    // Self-ping function
+    const selfPing = () => {
+      https.get(`${BACKEND_URL}/api/properties`, (res) => {
+        let data = '';
+        res.on('data', (chunk) => { data += chunk; });
+        res.on('end', () => {
+          if (res.statusCode === 200) {
+            console.log(`✅ Self-ping successful at ${new Date().toISOString()}`);
+          } else {
+            console.log(`⚠️ Self-ping returned status ${res.statusCode}`);
+          }
+        });
+      }).on('error', (err) => {
+        console.error(`❌ Self-ping failed: ${err.message}`);
+      });
+    };
+    
+    // Initial ping after 5 minutes
+    setTimeout(selfPing, 5 * 60 * 1000);
+    
+    // Set up recurring ping
+    setInterval(selfPing, SELF_PING_INTERVAL);
+  }
 });
