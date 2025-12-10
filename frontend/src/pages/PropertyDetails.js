@@ -380,88 +380,126 @@ const PropertyDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Images & Details */}
           <div className="lg:col-span-2">
-            {/* Image Gallery */}
-            <Card className="overflow-hidden mb-6">
+            {/* Image Gallery - Modern Pixel-Inspired Design */}
+            <Card className="overflow-hidden mb-6 border-2 border-border shadow-2xl">
               {images.length > 0 ? (
                 <>
-                  <div className="relative bg-black aspect-video md:aspect-[16/10]">
-                    <img
-                      src={images[selectedImage]}
-                      alt={property.title}
-                      className="w-full h-full object-contain"
-                      onError={(e) => {
-                        e.target.src = 'https://placehold.co/800x600?text=Property+Image';
-                      }}
-                    />
+                  {/* Main Image Display */}
+                  <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800">
+                    {/* Desktop: Large preview with arrows */}
+                    <div className="hidden md:block relative aspect-video">
+                      <img
+                        src={images[selectedImage]}
+                        alt={property.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.target.src = 'https://placehold.co/800x600?text=Property+Image';
+                        }}
+                      />
+                      
+                      {/* Navigation Arrows - Desktop */}
+                      {images.length > 1 && (
+                        <>
+                          <button
+                            onClick={() => setSelectedImage(prev => (prev === 0 ? images.length - 1 : prev - 1))}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-700 text-slate-900 dark:text-white p-3 rounded-xl shadow-xl transition-all hover:scale-110 backdrop-blur-sm border border-slate-200 dark:border-slate-700"
+                          >
+                            <ArrowLeft className="w-6 h-6" />
+                          </button>
+                          <button
+                            onClick={() => setSelectedImage(prev => (prev === images.length - 1 ? 0 : prev + 1))}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-700 text-slate-900 dark:text-white p-3 rounded-xl shadow-xl transition-all hover:scale-110 backdrop-blur-sm border border-slate-200 dark:border-slate-700"
+                          >
+                            <ArrowLeft className="w-6 h-6 rotate-180" />
+                          </button>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Mobile: Horizontal Scrollable Gallery */}
+                    <div className="md:hidden relative">
+                      <div 
+                        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth"
+                        onScroll={(e) => {
+                          const scrollLeft = e.target.scrollLeft;
+                          const itemWidth = e.target.offsetWidth;
+                          const index = Math.round(scrollLeft / itemWidth);
+                          setSelectedImage(index);
+                        }}
+                      >
+                        {images.map((img, index) => (
+                          <div
+                            key={index}
+                            className="flex-shrink-0 w-full aspect-[4/3] snap-center relative"
+                          >
+                            <img
+                              src={img}
+                              alt={`${property.title} - Image ${index + 1}`}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                e.target.src = 'https://placehold.co/800x600?text=Property+Image';
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {/* Scroll Indicator Dots - Mobile */}
+                      {images.length > 1 && (
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/60 dark:bg-white/10 px-3 py-2 rounded-full backdrop-blur-md">
+                          {images.map((_, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setSelectedImage(index)}
+                              className={`w-2 h-2 rounded-full transition-all ${
+                                selectedImage === index 
+                                  ? 'bg-white w-6' 
+                                  : 'bg-white/50 hover:bg-white/75'
+                              }`}
+                              aria-label={`View image ${index + 1}`}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
                     
-                    {/* Status Badge */}
-                    <div className="absolute top-4 right-4">
-                      <Badge className={
-                        property.status === 'available' ? 'bg-green-500' :
-                        property.status === 'sold' ? 'bg-red-500' : 'bg-yellow-500'
-                      }>
+                    {/* Status Badge - Pixel Style */}
+                    <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10">
+                      <Badge className={`
+                        px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg border-2
+                        ${property.status === 'available' 
+                          ? 'bg-emerald-500 border-emerald-600 text-white hover:bg-emerald-600' 
+                          : property.status === 'sold' 
+                          ? 'bg-rose-500 border-rose-600 text-white hover:bg-rose-600' 
+                          : 'bg-amber-500 border-amber-600 text-white hover:bg-amber-600'
+                        }
+                      `}>
                         {property.status}
                       </Badge>
                     </div>
 
-                    {/* Navigation Arrows for Mobile */}
-                    {images.length > 1 && (
-                      <>
-                        <button
-                          onClick={() => setSelectedImage(prev => (prev === 0 ? images.length - 1 : prev - 1))}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors md:hidden"
-                        >
-                          <ArrowLeft className="w-5 h-5" />
-                        </button>
-                        <button
-                          onClick={() => setSelectedImage(prev => (prev === images.length - 1 ? 0 : prev + 1))}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors md:hidden"
-                        >
-                          <ArrowLeft className="w-5 h-5 rotate-180" />
-                        </button>
-                      </>
-                    )}
-
-                    {/* Image Counter */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+                    {/* Image Counter - Pixel Style */}
+                    <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 bg-black/80 dark:bg-white/20 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-bold backdrop-blur-md border border-white/20">
                       {selectedImage + 1} / {images.length}
                     </div>
                   </div>
                   
-                  {/* Thumbnail Gallery - Desktop */}
+                  {/* Thumbnail Grid - Desktop Only */}
                   {images.length > 1 && (
-                    <div className="hidden md:grid grid-cols-6 gap-2 p-4">
-                      {images.map((img, index) => (
-                        <div
-                          key={index}
-                          className={`relative aspect-video rounded overflow-hidden cursor-pointer border-2 transition-all ${
-                            selectedImage === index ? 'border-orange-600 ring-2 ring-orange-300' : 'border-transparent hover:border-gray-300'
-                          }`}
-                          onClick={() => setSelectedImage(index)}
-                        >
-                          <img
-                            src={img}
-                            alt={`Thumbnail ${index + 1}`}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              e.target.src = 'https://placehold.co/100x100?text=Image';
-                            }}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Thumbnail Slider - Mobile */}
-                  {images.length > 1 && (
-                    <div className="md:hidden p-4">
-                      <div className="flex gap-2 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2">
+                    <div className="hidden md:block p-4 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950">
+                      <div className="grid grid-cols-4 lg:grid-cols-6 gap-3">
                         {images.map((img, index) => (
-                          <div
+                          <button
                             key={index}
-                            className={`relative flex-shrink-0 w-20 aspect-video rounded overflow-hidden cursor-pointer border-2 snap-start transition-all ${
-                              selectedImage === index ? 'border-orange-600 ring-2 ring-orange-300' : 'border-transparent'
-                            }`}
+                            className={`
+                              relative aspect-video rounded-lg overflow-hidden cursor-pointer
+                              transition-all duration-300 transform hover:scale-105
+                              border-3 shadow-md hover:shadow-xl
+                              ${selectedImage === index 
+                                ? 'border-orange-500 ring-4 ring-orange-300 dark:ring-orange-600 scale-105' 
+                                : 'border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-700'
+                              }
+                            `}
                             onClick={() => setSelectedImage(index)}
                           >
                             <img
@@ -472,137 +510,178 @@ const PropertyDetails = () => {
                                 e.target.src = 'https://placehold.co/100x100?text=Image';
                               }}
                             />
-                          </div>
+                            {selectedImage === index && (
+                              <div className="absolute inset-0 bg-orange-500/20 dark:bg-orange-400/30" />
+                            )}
+                          </button>
                         ))}
                       </div>
                     </div>
                   )}
                 </>
               ) : (
-                <div className="aspect-video md:aspect-[16/10] flex items-center justify-center bg-gray-100">
-                  <Home className="w-24 h-24 text-gray-300" />
+                <div className="aspect-video flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
+                  <div className="text-center">
+                    <Home className="w-20 h-20 sm:w-24 sm:h-24 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+                    <p className="text-slate-500 dark:text-slate-400 font-medium">No images available</p>
+                  </div>
                 </div>
               )}
             </Card>
 
-            {/* Property Description */}
-            <Card className="p-4 sm:p-6 mb-4 sm:mb-6">
-              <h1 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-foreground">{property.title}</h1>
+            {/* Property Title & Info - Pixel Inspired */}
+            <Card className="p-4 sm:p-6 mb-4 sm:mb-6 border-2 border-border shadow-xl bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950">
+              {/* Title */}
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-3 sm:mb-4 bg-gradient-to-r from-orange-600 to-orange-500 dark:from-orange-400 dark:to-orange-300 bg-clip-text text-transparent leading-tight">
+                {property.title}
+              </h1>
               
-              <div className="flex items-start text-muted-foreground mb-3 sm:mb-4">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0 mt-0.5" />
-                <span className="text-sm sm:text-base">{property.address}, {property.city}, {property.state} - {property.pincode}</span>
+              {/* Location */}
+              <div className="flex items-start mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 text-orange-600 dark:text-orange-400 flex-shrink-0 mt-0.5" />
+                <span className="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium">
+                  {property.address}, {property.city}, {property.state} - {property.pincode}
+                </span>
               </div>
 
-              <div className="text-3xl sm:text-4xl font-bold text-orange-600 mb-4 sm:mb-6">
-                {formatPrice(property.price)}
-                {property.listing_type === 'rent' && <span className="text-base sm:text-lg text-muted-foreground">/month</span>}
-              </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-border">
-                <div className="flex items-start">
-                  <Bed className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-muted-foreground flex-shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Bedrooms</div>
-                    <div className="font-semibold text-sm sm:text-base text-foreground">{property.bedrooms || 'N/A'}</div>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Bath className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-muted-foreground flex-shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Bathrooms</div>
-                    <div className="font-semibold text-sm sm:text-base text-foreground">{property.bathrooms || 'N/A'}</div>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Square className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-muted-foreground flex-shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Area</div>
-                    <div className="font-semibold text-sm sm:text-base text-foreground">{property.area_sqft || 'N/A'} sqft</div>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-muted-foreground flex-shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Type</div>
-                    <div className="font-semibold text-sm sm:text-base text-foreground">{property.property_type}</div>
-                  </div>
+              {/* Price - Pixel Style */}
+              <div className="mb-6 sm:mb-8 p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-600 dark:to-orange-700 border-2 sm:border-4 border-orange-600 dark:border-orange-500 shadow-xl sm:shadow-2xl">
+                <div className="text-xs sm:text-sm font-bold text-orange-100 uppercase tracking-wider mb-1 sm:mb-2">Price</div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white flex items-baseline gap-2">
+                  {formatPrice(property.price)}
+                  {property.listing_type === 'rent' && (
+                    <span className="text-lg sm:text-xl lg:text-2xl text-orange-100 font-semibold">/month</span>
+                  )}
                 </div>
               </div>
 
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-foreground">Description</h3>
-                <p className="text-sm sm:text-base text-muted-foreground whitespace-pre-line leading-relaxed">
+              {/* Property Features Grid - Pixel Cards */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                  <div className="flex items-center mb-2 sm:mb-3">
+                    <div className="p-1.5 sm:p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                      <Bed className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600 dark:text-orange-400" />
+                    </div>
+                  </div>
+                  <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Bedrooms</div>
+                  <div className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">{property.bedrooms || 'N/A'}</div>
+                </div>
+
+                <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                  <div className="flex items-center mb-2 sm:mb-3">
+                    <div className="p-1.5 sm:p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                      <Bath className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-400" />
+                    </div>
+                  </div>
+                  <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Bathrooms</div>
+                  <div className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">{property.bathrooms || 'N/A'}</div>
+                </div>
+
+                <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                  <div className="flex items-center mb-2 sm:mb-3">
+                    <div className="p-1.5 sm:p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
+                      <Square className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 dark:text-emerald-400" />
+                    </div>
+                  </div>
+                  <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Area</div>
+                  <div className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">{property.area_sqft || 'N/A'} <span className="text-xs sm:text-sm font-normal">sqft</span></div>
+                </div>
+
+                <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                  <div className="flex items-center mb-2 sm:mb-3">
+                    <div className="p-1.5 sm:p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
+                      <Home className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 dark:text-purple-400" />
+                    </div>
+                  </div>
+                  <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Type</div>
+                  <div className="text-base sm:text-lg font-black text-slate-900 dark:text-white capitalize">{property.property_type}</div>
+                </div>
+              </div>
+
+              {/* Description Section */}
+              <div className="pt-4 sm:pt-6 border-t-2 border-slate-200 dark:border-slate-700">
+                <h3 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 text-slate-900 dark:text-white flex items-center gap-2 sm:gap-3">
+                  <div className="w-1 sm:w-1.5 h-6 sm:h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full" />
+                  Description
+                </h3>
+                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed">
                   {property.description || 'No description available.'}
                 </p>
               </div>
             </Card>
 
-            {/* Property Details */}
-            <Card className="p-4 sm:p-6 mb-4 sm:mb-6">
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-foreground">Property Details</h3>
+            {/* Property Details - Pixel Style */}
+            <Card className="p-4 sm:p-6 mb-4 sm:mb-6 border-2 border-border shadow-xl bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950">
+              <h3 className="text-xl sm:text-2xl font-black mb-4 sm:mb-6 text-slate-900 dark:text-white flex items-center gap-2 sm:gap-3">
+                <div className="w-1 sm:w-1.5 h-6 sm:h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full" />
+                Property Details
+              </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="py-2 border-b sm:border-b-0 border-border">
-                  <span className="text-xs sm:text-sm text-muted-foreground block mb-1">Listing Type:</span>
-                  <span className="font-semibold text-sm sm:text-base text-foreground capitalize">{property.listing_type}</span>
+                <div className="p-3 sm:p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                  <span className="text-xs sm:text-sm text-orange-600 dark:text-orange-400 block mb-2 font-bold uppercase tracking-wide">Listing Type:</span>
+                  <span className="font-black text-base sm:text-lg text-slate-900 dark:text-white capitalize">{property.listing_type}</span>
                 </div>
-                <div className="py-2 border-b sm:border-b-0 border-border">
-                  <span className="text-xs sm:text-sm text-muted-foreground block mb-1">Furnishing:</span>
-                  <span className="font-semibold text-sm sm:text-base text-foreground">{property.furnishing || 'N/A'}</span>
+                <div className="p-3 sm:p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                  <span className="text-xs sm:text-sm text-orange-600 dark:text-orange-400 block mb-2 font-bold uppercase tracking-wide">Furnishing:</span>
+                  <span className="font-black text-base sm:text-lg text-slate-900 dark:text-white">{property.furnishing || 'N/A'}</span>
                 </div>
-                <div className="py-2 border-b sm:border-b-0 border-border">
-                  <span className="text-xs sm:text-sm text-muted-foreground block mb-1">Floor:</span>
-                  <span className="font-semibold text-sm sm:text-base text-foreground">{property.floor_number || 'N/A'} of {property.total_floors || 'N/A'}</span>
+                <div className="p-3 sm:p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                  <span className="text-xs sm:text-sm text-orange-600 dark:text-orange-400 block mb-2 font-bold uppercase tracking-wide">Floor:</span>
+                  <span className="font-black text-base sm:text-lg text-slate-900 dark:text-white">{property.floor_number || 'N/A'} of {property.total_floors || 'N/A'}</span>
                 </div>
-                <div className="py-2 border-b sm:border-b-0 border-border">
-                  <span className="text-xs sm:text-sm text-muted-foreground block mb-1">Balconies:</span>
-                  <span className="font-semibold text-sm sm:text-base text-foreground">{property.balconies || 'N/A'}</span>
+                <div className="p-3 sm:p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                  <span className="text-xs sm:text-sm text-orange-600 dark:text-orange-400 block mb-2 font-bold uppercase tracking-wide">Balconies:</span>
+                  <span className="font-black text-base sm:text-lg text-slate-900 dark:text-white">{property.balconies || 'N/A'}</span>
                 </div>
-                <div className="py-2 border-b sm:border-b-0 border-border">
-                  <span className="text-xs sm:text-sm text-muted-foreground block mb-1">Age:</span>
-                  <span className="font-semibold text-sm sm:text-base text-foreground">{property.age_of_property || 'N/A'} years</span>
+                <div className="p-3 sm:p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                  <span className="text-xs sm:text-sm text-orange-600 dark:text-orange-400 block mb-2 font-bold uppercase tracking-wide">Age:</span>
+                  <span className="font-black text-base sm:text-lg text-slate-900 dark:text-white">{property.age_of_property || 'N/A'} years</span>
                 </div>
-                <div className="py-2 border-b sm:border-b-0 border-border">
-                  <span className="text-xs sm:text-sm text-muted-foreground block mb-1">Facing:</span>
-                  <span className="font-semibold text-sm sm:text-base text-foreground">{property.facing_direction || 'N/A'}</span>
+                <div className="p-3 sm:p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                  <span className="text-xs sm:text-sm text-orange-600 dark:text-orange-400 block mb-2 font-bold uppercase tracking-wide">Facing:</span>
+                  <span className="font-black text-base sm:text-lg text-slate-900 dark:text-white">{property.facing_direction || 'N/A'}</span>
                 </div>
-                <div className="py-2 border-b sm:border-b-0 border-border">
-                  <span className="text-xs sm:text-sm text-muted-foreground block mb-1">Ownership:</span>
-                  <span className="font-semibold text-sm sm:text-base text-foreground">{property.ownership_type || 'N/A'}</span>
+                <div className="p-3 sm:p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                  <span className="text-xs sm:text-sm text-orange-600 dark:text-orange-400 block mb-2 font-bold uppercase tracking-wide">Ownership:</span>
+                  <span className="font-black text-base sm:text-lg text-slate-900 dark:text-white">{property.ownership_type || 'N/A'}</span>
                 </div>
-                <div className="py-2">
-                  <span className="text-xs sm:text-sm text-muted-foreground block mb-1">Available From:</span>
-                  <span className="font-semibold text-sm sm:text-base text-foreground">
+                <div className="p-3 sm:p-4 rounded-lg bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                  <span className="text-xs sm:text-sm text-orange-600 dark:text-orange-400 block mb-2 font-bold uppercase tracking-wide">Available From:</span>
+                  <span className="font-black text-base sm:text-lg text-slate-900 dark:text-white">
                     {property.available_from ? new Date(property.available_from).toLocaleDateString() : 'N/A'}
                   </span>
                 </div>
               </div>
             </Card>
 
-            {/* Amenities */}
+            {/* Amenities - Pixel Style */}
             {property.amenities && property.amenities.length > 0 && (
-              <Card className="p-4 sm:p-6 mb-4 sm:mb-6">
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-foreground">Amenities</h3>
-                <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
+              <Card className="p-4 sm:p-6 mb-4 sm:mb-6 border-2 border-border shadow-xl bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950">
+                <h3 className="text-xl sm:text-2xl font-black mb-4 sm:mb-6 text-slate-900 dark:text-white flex items-center gap-2 sm:gap-3">
+                  <div className="w-1 sm:w-1.5 h-6 sm:h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full" />
+                  Amenities
+                </h3>
+                <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-3">
                   {property.amenities.map((amenity, index) => (
-                    <div key={index} className="flex items-center py-1">
-                      <div className="w-2 h-2 bg-orange-600 rounded-full mr-2 flex-shrink-0"></div>
-                      <span className="text-sm sm:text-base text-foreground">{amenity}</span>
+                    <div key={index} className="flex items-center p-3 rounded-lg bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-orange-500 dark:hover:border-orange-400 hover:shadow-lg transition-all">
+                      <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mr-3 flex-shrink-0 shadow-lg shadow-orange-500/50"></div>
+                      <span className="text-sm sm:text-base text-slate-900 dark:text-white font-semibold">{amenity}</span>
                     </div>
                   ))}
                 </div>
               </Card>
             )}
 
-            {/* Google Maps */}
+            {/* Google Maps - Pixel Style */}
             {(mapEmbedUrl || property.google_maps_link) && (
-              <Card className="p-4 sm:p-6 mb-4 sm:mb-6">
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 flex items-center text-foreground">
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-orange-600" />
+              <Card className="p-4 sm:p-6 mb-4 sm:mb-6 border-2 border-border shadow-xl bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950">
+                <h3 className="text-xl sm:text-2xl font-black mb-4 sm:mb-6 flex items-center text-slate-900 dark:text-white gap-2 sm:gap-3">
+                  <div className="w-1 sm:w-1.5 h-6 sm:h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full" />
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600 dark:text-orange-400" />
                   Location on Map
                 </h3>
                 {mapEmbedUrl ? (
-                  <div className="relative w-full pb-[75%] sm:pb-[56.25%] md:pb-[400px] rounded-lg overflow-hidden bg-muted">
+                  <div className="relative w-full pb-[75%] sm:pb-[56.25%] md:pb-[400px] rounded-xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 shadow-lg bg-muted">
                     <iframe
                       src={mapEmbedUrl}
                       className="absolute top-0 left-0 w-full h-full"
@@ -613,28 +692,30 @@ const PropertyDetails = () => {
                     />
                   </div>
                 ) : (
-                  <div className="relative w-full pb-[75%] sm:pb-[56.25%] md:pb-[400px] rounded-lg overflow-hidden bg-muted flex items-center justify-center">
-                    <p className="text-muted-foreground text-sm sm:text-base">Loading map...</p>
+                  <div className="relative w-full pb-[75%] sm:pb-[56.25%] md:pb-[400px] rounded-xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 shadow-lg bg-muted flex items-center justify-center">
+                    <p className="text-muted-foreground text-sm sm:text-base font-semibold">Loading map...</p>
                   </div>
                 )}
                 {property.google_maps_link && (
                   <Button
-                    variant="outline"
-                    className="w-full mt-3 sm:mt-4 text-sm sm:text-base h-9 sm:h-10"
+                    className="w-full mt-4 text-sm sm:text-base h-10 sm:h-12 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border-2 border-orange-600 dark:border-orange-500 font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
                     onClick={() => window.open(property.google_maps_link, '_blank')}
                   >
-                    <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
+                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     Open in Google Maps
                   </Button>
                 )}
               </Card>
             )}
 
-            {/* Video Tour */}
+            {/* Video Tour - Pixel Style */}
             {property.video_tour_url && (
-              <Card className="p-4 sm:p-6 mb-4 sm:mb-6">
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-foreground">Video Tour</h3>
-                <div className="relative w-full pb-[56.25%] rounded-lg overflow-hidden bg-gray-900">
+              <Card className="p-4 sm:p-6 mb-4 sm:mb-6 border-2 border-border shadow-xl bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950">
+                <h3 className="text-xl sm:text-2xl font-black mb-4 sm:mb-6 text-slate-900 dark:text-white flex items-center gap-2 sm:gap-3">
+                  <div className="w-1 sm:w-1.5 h-6 sm:h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full" />
+                  Video Tour
+                </h3>
+                <div className="relative w-full pb-[56.25%] rounded-xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 shadow-lg bg-gray-900">
                   <iframe
                     src={(() => {
                       const url = property.video_tour_url;
@@ -665,41 +746,57 @@ const PropertyDetails = () => {
             )}
           </div>
 
-          {/* Right Column - Contact Card */}
-          <div className="lg:col-span-1 space-y-4 sm:space-y-6">
-            <Card className="p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-foreground">Interested in this property?</h3>
+          {/* Right Column - Contact Card - Pixel Inspired */}
+          <div className="lg:col-span-1 space-y-6">
+            <Card className="p-6 sm:p-8 border-2 border-border shadow-2xl bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 sticky top-24">
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 border-2 border-orange-200 dark:border-orange-800 mb-4">
+                  <div className="w-2 h-2 bg-orange-600 dark:bg-orange-400 rounded-full animate-pulse" />
+                  <span className="text-sm font-bold text-orange-700 dark:text-orange-300 uppercase tracking-wide">Available Now</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-2">
+                  Interested in this property?
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
+                  Get in touch with our expert team
+                </p>
+              </div>
               
               {property.contact_name && (
-                <p className="text-xs sm:text-sm text-muted-foreground mb-3">
-                  Contact: <span className="font-medium text-foreground">{property.contact_name}</span>
-                </p>
+                <div className="mb-6 p-4 rounded-xl bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">
+                    Contact Person
+                  </p>
+                  <p className="text-lg font-bold text-slate-900 dark:text-white">{property.contact_name}</p>
+                </div>
               )}
               
-              <Button 
-                onClick={handleContactAgent}
-                className="w-full bg-orange-600 hover:bg-orange-700 mb-2 sm:mb-3 h-10 sm:h-auto text-sm sm:text-base"
-                disabled={!property.contact_phone}
-              >
-                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
-                <span className="truncate">{property.contact_phone ? `Call ${property.contact_phone}` : 'Contact Agent'}</span>
-              </Button>
+              <div className="space-y-3">
+                <Button 
+                  onClick={handleContactAgent}
+                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 dark:from-orange-600 dark:to-orange-700 text-white font-bold py-6 text-base shadow-xl hover:shadow-2xl border-2 border-orange-600 dark:border-orange-500 transition-all hover:scale-105"
+                  disabled={!property.contact_phone}
+                >
+                  <Phone className="w-5 h-5 mr-3" />
+                  <span className="truncate">{property.contact_phone ? `Call ${property.contact_phone}` : 'Contact Agent'}</span>
+                </Button>
+                
+                <Button 
+                  onClick={handleEmailInquiry}
+                  variant="outline" 
+                  className="w-full py-6 text-base font-bold border-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105"
+                  disabled={!property.contact_email}
+                >
+                  <Mail className="w-5 h-5 mr-3" />
+                  {property.contact_email ? 'Email Inquiry' : 'Email Not Available'}
+                </Button>
+              </div>
               
-              <Button 
-                onClick={handleEmailInquiry}
-                variant="outline" 
-                className="w-full mb-3 sm:mb-4 h-10 sm:h-auto text-sm sm:text-base"
-                disabled={!property.contact_email}
-              >
-                <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
-                {property.contact_email ? 'Email Inquiry' : 'Email Not Available'}
-              </Button>
-              
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3 mt-6 pt-6 border-t-2 border-slate-200 dark:border-slate-700">
                 <Button 
                   onClick={handleShare} 
                   variant="outline" 
-                  className="text-sm h-10 px-3 sm:px-4"
+                  className="text-sm font-bold py-5 border-2 hover:bg-slate-100 dark:hover:bg-slate-800 hover:scale-105 transition-all"
                 >
                   <Share2 className="w-4 h-4 mr-2" />
                   <span>Share</span>
@@ -708,71 +805,78 @@ const PropertyDetails = () => {
                   onClick={handleSaveProperty} 
                   variant={isSaved ? "default" : "outline"} 
                   disabled={savingProperty}
-                  className={`text-sm h-10 px-3 sm:px-4 ${isSaved ? "bg-red-500 hover:bg-red-600 text-white" : ""}`}
+                  className={`text-sm font-bold py-5 border-2 transition-all hover:scale-105 ${
+                    isSaved 
+                      ? "bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white border-rose-600" 
+                      : "hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
                 >
                   <Heart className={`w-4 h-4 mr-2 ${isSaved ? 'fill-current' : ''}`} />
                   <span>{savingProperty ? 'Saving...' : isSaved ? 'Saved' : 'Save'}</span>
                 </Button>
               </div>
 
-              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-border">
-                <h4 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base text-foreground">Property Views</h4>
-                <div className="flex items-center text-muted-foreground">
-                  <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
-                  <span className="text-sm sm:text-base">{property.views || 0} views</span>
+              <div className="mt-6 pt-6 border-t-2 border-slate-200 dark:border-slate-700">
+                <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700">
+                  <div>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide font-semibold mb-1">Property Views</p>
+                    <p className="text-2xl font-black text-slate-900 dark:text-white">{property.views || 0}</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-white dark:bg-slate-950 border-2 border-slate-200 dark:border-slate-700">
+                    <Eye className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                  </div>
                 </div>
               </div>
             </Card>
 
-            {/* Property Brochure Card */}
+            {/* Property Brochure Card - Pixel Style */}
             {property.brochure_url && (
-              <Card className="p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-foreground flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-orange-600" />
+              <Card className="p-6 border-2 border-border shadow-xl bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950">
+                <h3 className="text-xl font-black mb-4 text-slate-900 dark:text-white flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                    <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  </div>
                   Property Brochure
                 </h3>
                 
                 <div className="space-y-3">
-                  {/* Action Buttons */}
-                  <div className="grid grid-cols-1 gap-2">
-                    <Button
-                      onClick={() => window.open(property.brochure_url, '_blank')}
-                      className="w-full bg-orange-600 hover:bg-orange-700 h-10 text-sm"
-                    >
-                      <Eye className="w-4 h-4 mr-2" />
-                      View Brochure
-                    </Button>
-                    <Button
-                      onClick={() => {
-                        const link = document.createElement('a');
-                        link.href = property.brochure_url;
-                        link.download = `${property.title.replace(/\s+/g, '_')}_Brochure.pdf`;
+                  <Button
+                    onClick={() => window.open(property.brochure_url, '_blank')}
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-5 border-2 border-blue-600 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                  >
+                    <Eye className="w-5 h-5 mr-2" />
+                    View Brochure
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      const link = document.createElement('a');
+                      link.href = property.brochure_url;
+                      link.download = `${property.title.replace(/\s+/g, '_')}_Brochure.pdf`;
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
                       }}
                       variant="outline"
-                      className="w-full h-10 text-sm"
+                      className="w-full py-5 font-bold border-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105"
                     >
-                      <Download className="w-4 h-4 mr-2" />
+                      <Download className="w-5 h-5 mr-2" />
                       Download PDF
                     </Button>
-                  </div>
-
-                  {/* PDF Embed Preview */}
-                  <div className="mt-4 rounded-lg overflow-hidden border border-border bg-muted">
-                    <iframe
-                      src={`${property.brochure_url}#toolbar=0&navpanes=0&scrollbar=0`}
-                      className="w-full h-[300px] sm:h-[400px] lg:h-[500px] bg-white"
-                      title="Property Brochure Preview"
-                      style={{ display: 'block' }}
-                    />
-                  </div>
-                  
-                  <p className="text-xs text-muted-foreground text-center">
-                    Click "View Brochure" for full-screen experience
-                  </p>
                 </div>
+
+                {/* PDF Embed Preview */}
+                <div className="mt-4 rounded-xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 shadow-lg">
+                  <iframe
+                    src={`${property.brochure_url}#toolbar=0&navpanes=0&scrollbar=0`}
+                    className="w-full h-[300px] sm:h-[400px] bg-white dark:bg-slate-800"
+                    title="Property Brochure Preview"
+                    style={{ display: 'block' }}
+                  />
+                </div>
+                
+                <p className="text-xs text-slate-500 dark:text-slate-400 text-center mt-3">
+                  Click "View Brochure" for full-screen experience
+                </p>
               </Card>
             )}
           </div>
