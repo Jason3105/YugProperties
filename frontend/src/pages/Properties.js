@@ -297,14 +297,14 @@ const Properties = () => {
 
                 {/* Property Details */}
                 <div className="p-3 sm:p-4 md:p-5 bg-card">
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1.5 sm:mb-2 line-clamp-1 text-foreground">{property.title}</h3>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1.5 sm:mb-2 line-clamp-1 text-foreground">{property.title}</h3>
                   
                   <div className="flex items-center text-muted-foreground mb-2 sm:mb-3">
                     <MapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-1 flex-shrink-0" />
                     <span className="text-xs sm:text-sm line-clamp-1">{property.city}, {property.state}</span>
                   </div>
 
-                  <div className="text-xl sm:text-2xl font-bold text-orange-600 mb-3 sm:mb-4">
+                  <div className="text-lg sm:text-xl font-bold text-orange-600 mb-3 sm:mb-4">
                     {formatPrice(property.price)}
                     {property.listing_type === 'rent' && <span className="text-xs sm:text-sm text-muted-foreground">/month</span>}
                   </div>

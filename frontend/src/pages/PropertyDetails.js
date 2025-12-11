@@ -532,7 +532,7 @@ const PropertyDetails = () => {
             {/* Property Title & Info - Pixel Inspired */}
             <Card className="p-4 sm:p-6 mb-4 sm:mb-6 border-2 border-border shadow-xl bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950">
               {/* Title */}
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-3 sm:mb-4 bg-gradient-to-r from-orange-600 to-orange-500 dark:from-orange-400 dark:to-orange-300 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-3 sm:mb-4 bg-gradient-to-r from-orange-600 to-orange-500 dark:from-orange-400 dark:to-orange-300 bg-clip-text text-transparent leading-tight">
                 {property.title}
               </h1>
               
@@ -547,10 +547,10 @@ const PropertyDetails = () => {
               {/* Price - Pixel Style */}
               <div className="mb-6 sm:mb-8 p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-600 dark:to-orange-700 border-2 sm:border-4 border-orange-600 dark:border-orange-500 shadow-xl sm:shadow-2xl">
                 <div className="text-xs sm:text-sm font-bold text-orange-100 uppercase tracking-wider mb-1 sm:mb-2">Price</div>
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white flex items-baseline gap-2">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-white flex items-baseline gap-2">
                   {formatPrice(property.price)}
                   {property.listing_type === 'rent' && (
-                    <span className="text-lg sm:text-xl lg:text-2xl text-orange-100 font-semibold">/month</span>
+                    <span className="text-base sm:text-lg lg:text-xl text-orange-100 font-semibold">/month</span>
                   )}
                 </div>
               </div>

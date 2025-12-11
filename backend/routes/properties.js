@@ -4,19 +4,31 @@ const multer = require('multer');
 const { auth } = require('../middleware/auth');
 const { optionalAuth } = require('../middleware/optionalAuth');
 const propertyController = require('../controllers/propertyController');
+const { 
+  validateProperty, 
+  validateId,
+  sanitizeBody,
+  suspiciousActivityDetector
+} = require('../middleware/security');
+
+// Apply security middleware
+router.use(suspiciousActivityDetector);
+router.use(sanitizeBody);
 
 // Configure multer for memory storage (images)
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
     fileSize: 20 * 1024 * 1024, // 20MB limit per file
+    files: 10 // Maximum 10 files
   },
   fileFilter: (req, file, cb) => {
-    // Accept images only
-    if (file.mimetype.startsWith('image/')) {
+    // Accept images only - strict MIME type checking
+    const allowedMimes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    if (allowedMimes.includes(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error('Only image files are allowed!'), false);
+      cb(new Error('Only JPEG, PNG, and WebP image files are allowed!'), false);
     }
   }
 });
@@ -43,7 +55,7 @@ router.get('/featured', propertyController.getFeaturedProperties);
 router.get('/map-embed-url', propertyController.getMapEmbedUrl);
 
 // Record property view (optional auth - works for both logged in and anonymous users)
-router.post('/:id/view', optionalAuth, propertyController.recordView);
+router.post('/:id/view', validateId, optionalAuth, propertyController.recordView);
 
 // Image upload endpoint (Admin only)
 const uploadMiddleware = upload.array('images', 10);

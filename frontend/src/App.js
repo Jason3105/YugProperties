@@ -4,6 +4,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import LoadingScreen from './components/LoadingScreen';
+import ScrollToTop from './components/ScrollToTop';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
@@ -100,6 +101,7 @@ function App() {
       <ThemeProvider>
         <AuthProvider>
           <Router>
+            <ScrollToTop />
             <RedirectHandler />
             <div className="App">
               <Navbar />
